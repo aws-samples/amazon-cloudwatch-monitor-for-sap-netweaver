@@ -1,0 +1,15 @@
+language: java
+
+os: osx
+
+jdk:
+  - openjdk8
+  #- openjdk11
+
+install:
+  - brew tap aws/tap
+  - brew install aws-sam-cli
+  - sam --version
+
+script: 
+  - sam build
