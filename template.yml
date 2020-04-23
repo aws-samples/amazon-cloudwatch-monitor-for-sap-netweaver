@@ -165,7 +165,7 @@ Resources:
         !Sub
           - SAP Monitoring for <${SID}>
           - { SID: !Ref SAPSIDParameter }
-      Runtime: java8
+      Runtime: java11
       MemorySize: 512
       Timeout: 30
       VpcConfig:
