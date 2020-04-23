@@ -16,7 +16,7 @@ Please see our blog post [SAP Monitoring: A serverless approach using Amazon Clo
 
 ## Setting it up
 
-Please follow the [step-by-step guide](docs/0_How_to_setup.md).
+Please follow the [step-by-step guide](docs/Setting_it_up.md).
 
 ## Architecture
 

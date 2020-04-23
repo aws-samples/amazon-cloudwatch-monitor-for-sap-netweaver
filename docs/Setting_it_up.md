@@ -53,7 +53,7 @@ Navigate to Dashboards and press Create dashboard to setup a new custom dashboar
 The resulting dashboards can look as follows
 
 ![Dashboard1](../assets/cw_dashboard1.png)
-![Dashboard1](../assets/cw_dashboard2.png)
+![Dashboard2](../assets/cw_dashboard2.png)
 
 By the way, if desired, CloudWatch even allows you to embed graphs into your webpage.
 
