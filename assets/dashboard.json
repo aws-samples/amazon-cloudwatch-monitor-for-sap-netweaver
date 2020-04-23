@@ -1,0 +1,304 @@
+{
+    "widgets": [
+        {
+            "type": "metric",
+            "x": 0,
+            "y": 0,
+            "width": 6,
+            "height": 3,
+            "properties": {
+                "metrics": [
+                    [ "sap-monitor", "UPTIME", "by SID", "HDB" ]
+                ],
+                "view": "singleValue",
+                "region": "eu-central-1",
+                "title": "Availability %",
+                "period": 2592000,
+                "stat": "Average"
+            }
+        },
+        {
+            "type": "metric",
+            "x": 12,
+            "y": 0,
+            "width": 12,
+            "height": 3,
+            "properties": {
+                "metrics": [
+                    [ "sap-monitor", "PING", "by SID", "HDB" ]
+                ],
+                "view": "timeSeries",
+                "stacked": false,
+                "region": "eu-central-1",
+                "period": 60,
+                "stat": "Average",
+                "yAxis": {
+                    "left": {
+                        "min": 0,
+                        "label": "Milliseconds",
+                        "showUnits": false
+                    }
+                },
+                "title": "Monitor Ping (ms)"
+            }
+        },
+        {
+            "type": "metric",
+            "x": 0,
+            "y": 3,
+            "width": 12,
+            "height": 6,
+            "properties": {
+                "metrics": [
+                    [ "sap-monitor", "USR_TOTAL", "by SID", "HDB_sidapp00_HDB_00" ],
+                    [ ".", "SYS_TOTAL", ".", "." ],
+                    [ ".", "USR_TOTAL", ".", "HDB_sidpas00_HDB_01" ],
+                    [ ".", "SYS_TOTAL", ".", "." ]
+                ],
+                "view": "timeSeries",
+                "stacked": false,
+                "region": "eu-central-1",
+                "stat": "Average",
+                "period": 30,
+                "yAxis": {
+                    "left": {
+                        "min": 0,
+                        "max": 100,
+                        "showUnits": false,
+                        "label": "Percent"
+                    }
+                },
+                "title": "CPU Utilization (st06)",
+                "legend": {
+                    "position": "right"
+                }
+            }
+        },
+        {
+            "type": "metric",
+            "x": 0,
+            "y": 9,
+            "width": 12,
+            "height": 6,
+            "properties": {
+                "metrics": [
+                    [ "sap-monitor", "ACT_DIA", "by SID", "HDB_sidapp00_HDB_00" ],
+                    [ "...", "HDB_sidpas00_HDB_01" ]
+                ],
+                "view": "timeSeries",
+                "stacked": false,
+                "region": "eu-central-1",
+                "stat": "Average",
+                "period": 30,
+                "annotations": {
+                    "horizontal": [
+                        {
+                            "label": "Max DIA ",
+                            "value": 10
+                        }
+                    ]
+                },
+                "yAxis": {
+                    "left": {
+                        "min": 0,
+                        "showUnits": false
+                    }
+                },
+                "title": "Active Dialog Work Processes (sm66)"
+            }
+        },
+        {
+            "type": "metric",
+            "x": 12,
+            "y": 3,
+            "width": 12,
+            "height": 6,
+            "properties": {
+                "metrics": [
+                    [ "AWS/EC2", "CPUUtilization", "InstanceId", "i-07077d1f8e1f2888f" ],
+                    [ "...", "i-0fe4126c96400a17e" ]
+                ],
+                "view": "timeSeries",
+                "stacked": false,
+                "region": "eu-central-1",
+                "period": 30,
+                "stat": "Average",
+                "yAxis": {
+                    "left": {
+                        "min": 0,
+                        "max": 100
+                    }
+                },
+                "title": "CPU Utilization (CloudWatch)",
+                "legend": {
+                    "position": "right"
+                }
+            }
+        },
+        {
+            "type": "metric",
+            "x": 6,
+            "y": 0,
+            "width": 6,
+            "height": 3,
+            "properties": {
+                "metrics": [
+                    [ "AWS/Lambda", "Errors", "FunctionName", "sap-monitor-HDB" ]
+                ],
+                "view": "timeSeries",
+                "stacked": false,
+                "region": "eu-central-1",
+                "period": 60,
+                "stat": "Average",
+                "title": "Monitor Errors"
+            }
+        },
+        {
+            "type": "metric",
+            "x": 12,
+            "y": 9,
+            "width": 12,
+            "height": 6,
+            "properties": {
+                "metrics": [
+                    [ "sap-monitor", "USERS", "by SID", "HDB_sidapp00_HDB_00" ],
+                    [ "...", "HDB_sidpas00_HDB_01" ]
+                ],
+                "view": "timeSeries",
+                "stacked": false,
+                "region": "eu-central-1",
+                "stat": "Average",
+                "period": 30,
+                "yAxis": {
+                    "left": {
+                        "min": 0,
+                        "showUnits": false
+                    }
+                },
+                "title": "Active Users (sm04)"
+            }
+        },
+        {
+            "type": "metric",
+            "x": 0,
+            "y": 15,
+            "width": 12,
+            "height": 6,
+            "properties": {
+                "metrics": [
+                    [ "sap-monitor", "FREE_MEM_PERC", "by SID", "HDB_sidapp00_HDB_00" ],
+                    [ "...", "HDB_sidpas00_HDB_01" ]
+                ],
+                "view": "timeSeries",
+                "stacked": false,
+                "region": "eu-central-1",
+                "stat": "Average",
+                "period": 60,
+                "title": "Free Memory (st06)",
+                "yAxis": {
+                    "left": {
+                        "max": 100,
+                        "min": 0,
+                        "showUnits": false,
+                        "label": "Percent"
+                    }
+                }
+            }
+        },
+        {
+            "type": "metric",
+            "x": 12,
+            "y": 15,
+            "width": 12,
+            "height": 6,
+            "properties": {
+                "metrics": [
+                    [ "sap-monitor", "ST03_DIA_AVG_SNAP", "by SID", "HDB", { "label": "Avg. Dialog Response Time per Step" } ],
+                    [ ".", "ST03_RFC_AVG_SNAP", ".", ".", { "label": "Avg. RFC Response Time per Step" } ]
+                ],
+                "view": "timeSeries",
+                "stacked": false,
+                "region": "eu-central-1",
+                "stat": "Average",
+                "period": 300,
+                "title": "Last Minute Load (st03)",
+                "yAxis": {
+                    "left": {
+                        "showUnits": false,
+                        "label": "Milliseconds"
+                    }
+                }
+            }
+        },
+        {
+            "type": "metric",
+            "x": 0,
+            "y": 21,
+            "width": 12,
+            "height": 3,
+            "properties": {
+                "metrics": [
+                    [ "sap-monitor", "ST03_RFC_DB_TIME_PERC_SNAP", "by SID", "HDB", { "label": "DB Time %" } ],
+                    [ ".", "ST03_RFC_CPU_TIME_PERC_SNAP", ".", ".", { "label": "CPU Time %" } ]
+                ],
+                "view": "singleValue",
+                "stacked": true,
+                "region": "eu-central-1",
+                "period": 300,
+                "title": "Response Time Distribution RFC (st03)",
+                "yAxis": {
+                    "left": {
+                        "showUnits": false,
+                        "label": "Percent"
+                    }
+                },
+                "stat": "Average",
+                "annotations": {
+                    "horizontal": [
+                        {
+                            "label": "Max CPU",
+                            "value": 40
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "metric",
+            "x": 12,
+            "y": 21,
+            "width": 12,
+            "height": 3,
+            "properties": {
+                "metrics": [
+                    [ "sap-monitor", "ST03_RFC_AVG_DB_SEQ_AVG_SNAP", "by SID", "HDB", { "label": "Sequential reads (ms)" } ],
+                    [ ".", "ST03_RFC_AVG_DB_CHG_AVG_SNAP", ".", ".", { "label": "Changes (ms)" } ],
+                    [ ".", "ST03_RFC_AVG_DB_DIR_SNAP", ".", ".", { "label": "Direct reads (ms)" } ]
+                ],
+                "view": "singleValue",
+                "region": "eu-central-1",
+                "title": "Average Database Times RFC (st03)",
+                "period": 300,
+                "stat": "Average"
+            }
+        },
+        {
+            "type": "metric",
+            "x": 0,
+            "y": 24,
+            "width": 24,
+            "height": 3,
+            "properties": {
+                "metrics": [
+                    [ "AWS/EC2", "CPUUtilization", "InstanceId", "i-0053020c0ff8770c7" ]
+                ],
+                "view": "timeSeries",
+                "region": "eu-central-1",
+                "title": "HANA CPU Utilization (CloudWatch)",
+                "stacked": false,
+                "period": 60,
+                "stat": "Average"
+            }
+        }
+    ]
+}

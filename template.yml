@@ -1,0 +1,218 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: SAP Netweaver Monitoring sap-monitor-<SID>
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 60
+
+Metadata:
+  AWS::ServerlessRepo::Application:
+    Name: sap-monitor
+    Description: SAP Netweaver Application Monitoring for Amazon CloudWatch
+    Author: frumania
+    SpdxLicenseId: Apache-2.0
+    LicenseUrl: LICENSE
+    ReadmeUrl: README.md
+    Labels: ['sap', 'netweaver', 'monitoring', 'cloudwatch']
+    HomePageUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver
+    SemanticVersion: 1.0.0
+    SourceCodeUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver
+  AWS::CloudFormation::Interface: 
+    ParameterGroups: 
+      - 
+        Label: 
+          default: "Network Configuration"
+        Parameters: 
+          - SubnetParameter
+          - SecurityGroupParameter
+      - 
+        Label: 
+          default: "SAP Configuration"
+        Parameters: 
+          - SAPSIDParameter
+          - SAPHostParameter
+          - SAPInstanceIDParameter
+          - SAPClientParameter
+          - SAPRFC0UserParameter
+          - SAPRFC1PasswordParameter
+    ParameterLabels: 
+      SubnetParameter: 
+        default: "Which VPC Subnet(s) should this be deployed to?"
+      SecurityGroupParameter: 
+        default: "Which Security Groups should be applied?"
+
+Parameters: 
+  SubnetParameter: 
+    Type: "List<AWS::EC2::Subnet::Id>"
+    Description: Provide Subnet(s) IDs, separate by comma
+  SecurityGroupParameter: 
+    Type: "List<AWS::EC2::SecurityGroup::Id>"
+    Description: Provide Security Group(s) IDs, separate by comma
+  LayerVersionParameter: 
+    Type: String
+    Description: Provide <sapjco> Lambda layer version
+    Default: "1"
+  ScheduleParameter: 
+    Type: Number
+    Description: Schedule /SDF/SMON job automatically (true = 1, false = 0)
+    Default: 1
+    MinValue: 0
+    MaxValue: 1
+  SAPSIDParameter: 
+    Type: String
+    Description: Provide SAP System ID (used as namespace/identification only)
+    MinLength: 3
+    MaxLength: 3
+  SAPHostParameter: 
+    Type: String
+    Description: Provide Hostname/IP-Address of Primary Application Server
+  SAPInstanceIDParameter: 
+    Type: String
+    Description: Provide SAP Instance Number
+    MinLength: 2
+    MaxLength: 2
+  SAPClientParameter: 
+    Type: String
+    Description: Provide SAP Client
+    Default: '000'
+    MinLength: 3
+    MaxLength: 3
+  SAPRFC0UserParameter: 
+    Type: String
+    Description: Provide RFC User
+  SAPRFC1PasswordParameter: 
+    Type: String
+    Description: Provide RFC Password
+    NoEcho: true
+
+Resources:
+  SecretsManager:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: #sap-nw-smon-cloudwatch-SID
+        !Sub
+        - sap-monitor-${SID}
+        - { SID: !Ref SAPSIDParameter }
+      Description:
+        !Sub
+          - Secret for SAP Monitoring <${SID}>
+          - { SID: !Ref SAPSIDParameter }
+      SecretString:
+        !Sub
+          - "{      
+            \"name\":\"${SID}\",
+            \"host\":\"${HOST}\",
+            \"sys_id\":\"${INSTANCEID}\",
+            \"client\":\"${CLIENT}\",
+            \"user\":\"${USER}\",
+            \"password\": \"${PASSWORD}\",
+            \"language\":\"en\",
+            \"/SDF/SMON_DESC\":\"AWSCW\",
+            \"/SDF/SMON_SCHEDULE\":${SCHED}
+            }"
+          - { SID: !Ref SAPSIDParameter, HOST: !Ref SAPHostParameter, INSTANCEID: !Ref SAPInstanceIDParameter, CLIENT: !Ref SAPClientParameter, USER: !Ref SAPRFC0UserParameter, PASSWORD: !Ref SAPRFC1PasswordParameter,  SCHED: !Ref ScheduleParameter }
+      Tags:
+        -
+          Key: AppName
+          Value: SAPMONITOR
+  ScheduledRule:
+    Type: 'AWS::Events::Rule'
+    Properties:
+      Name: #sap-monitor-SID
+        !Sub
+            - sap-monitor-${SID}
+            - { SID: !Ref SAPSIDParameter }
+      Description: #Scheduler for SAP Monitoring <SID>
+        !Sub
+            - Scheduler for SAP Monitoring <${SID}>
+            - { SID: !Ref SAPSIDParameter }
+      ScheduleExpression: rate(1 minute)
+      State: DISABLED
+      Targets:
+        - Arn: 
+            'Fn::GetAtt':
+              - CWLambdaFunction
+              - Arn
+          Id: latest
+  PermissionForEventsToInvokeLambda:
+    Type: 'AWS::Lambda::Permission'
+    Properties:
+      FunctionName: 
+        'Fn::GetAtt':
+          - CWLambdaFunction
+          - Arn
+      Action: 'lambda:InvokeFunction'
+      Principal: events.amazonaws.com
+      SourceArn:
+        'Fn::GetAtt':
+          - ScheduledRule
+          - Arn
+#  LogsLogGroup:
+#    Type: AWS::Logs::LogGroup
+#    Properties:
+#      LogGroupName:
+#        !Sub 
+#          - "/aws/lambda/${CWLambdaFunction}-${GUID}"
+#          - { GUID: !Select [2, !Split ["/", !Ref AWS::StackId ]] }
+#      RetentionInDays: 7
+  CWLambdaFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: code
+      Layers: 
+          - !Sub 
+            - arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:sapjco:${LLY}
+            - { LLY: !Ref LayerVersionParameter }
+      Handler: init::handleRequest
+      FunctionName: 
+        !Sub
+          - sap-monitor-${SID}
+          - { SID: !Ref SAPSIDParameter }
+      Description: #SAP Monitoring for <SID>
+        !Sub
+          - SAP Monitoring for <${SID}>
+          - { SID: !Ref SAPSIDParameter }
+      Runtime: java8 #java11
+      MemorySize: 512
+      Timeout: 30
+      VpcConfig:
+        SecurityGroupIds:
+          !Ref SecurityGroupParameter
+        SubnetIds:
+          !Ref SubnetParameter
+      Environment:
+        Variables:
+          #SSM: sap-nw-smon-cloudwatch-S4H
+          SECRET: 
+            !Sub
+              - sap-monitor-${SID}
+              - { SID: !Ref SAPSIDParameter }
+      Policies:
+        - Version: '2012-10-17'
+          Statement:
+            #- Effect: Allow
+            #  Action:
+            #    - 'ssm:GetParameter'
+            #  Resource: >-
+            #    arn:aws:ssm:eu-central-1:529824580566:parameter/sap-nw-smon-cloudwatch-S4H
+            - Effect: Allow
+              Action:
+                - 'secretsmanager:GetSecretValue'
+              Resource:
+                !Ref SecretsManager
+            - Effect: Allow
+              Action:
+                - 'cloudwatch:PutMetricData'
+              Resource: '*'
+      Tags:
+        AppName: SAPMONITOR
+
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  CWLambdaFunction:
+    Description: "SAP Monitor Lambda Function ARN"
+    Value: !GetAtt CWLambdaFunction.Arn

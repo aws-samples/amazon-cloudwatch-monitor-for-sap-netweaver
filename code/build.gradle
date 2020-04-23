@@ -1,0 +1,46 @@
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'checkstyle'
+
+mainClassName = 'init'
+
+checkstyle {
+    toolVersion '8.31'
+    configFile file("../checkstyle.xml")
+}
+checkstyleMain {
+    source ='src/main/java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8 //11
+targetCompatibility = 1.8 //11
+
+dependencies {
+    compile (
+        'com.amazonaws:aws-lambda-java-core:1.2.0',
+        'com.amazonaws:aws-lambda-java-events:2.2.6',
+        'com.amazonaws:aws-java-sdk-ssm:1.11.571',
+        'com.amazonaws:aws-java-sdk-cloudwatch:1.11.614',
+        'com.amazonaws:aws-java-sdk-secretsmanager:1.11.745',
+        'org.json:json:20180813'
+    )
+    compile fileTree(dir: 'jars', include: '*')
+}
+
+task buildZip(type: Zip) {
+    from compileJava
+    from processResources              
+    into('lib') {
+        from configurations.compileClasspath
+    }           
+}
+
+run {
+    jvmArgs = ['-Djava.library.path=./sapjco3-darwinintel64/']
+}
+
+build.dependsOn buildZip
