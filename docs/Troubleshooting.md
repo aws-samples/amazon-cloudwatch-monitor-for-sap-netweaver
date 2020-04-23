@@ -6,8 +6,8 @@ You can always change your credentials or connection information (e.g. host) ins
 
 To force a config reload, simply pass the string "refresh":
 
-![Imgur](https://i.imgur.com/HvKf3Mg.png)
+![Imgur](../assets/tr1.png)
 
-![Imgur](https://i.imgur.com/cLOpE1q.png)
+![Imgur](../assets/tr2.png)
 
 For debugging purposes, temporarily add an environment variable - Key: DEBUG Value: true

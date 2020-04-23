@@ -9,8 +9,8 @@ Please see our blog post [SAP Monitoring: A serverless approach using Amazon Clo
 - SAP NetWeaver ABAP 7.4 or higher (ECC, S4, BW, ...), running on AWS
   - SAP Component ST-PI Release 740 SP 08 or higher (due to usage of [/SDF/SMON](https://wiki.scn.sap.com/wiki/display/CPP/All+about+SMON))
   - SAP Statistical Records enabled (TCODE stad/st03), usually by default, if not check SAP Note [2369736](https://launchpad.support.sap.com/#/notes/0002369736).
-  - SAP RFC User & PW with authorizations - see "How to -> Step 1"
-- SAP S-User to download SAP JCo – see “How to -> Step 2”
+  - SAP RFC User & PW with authorizations - see "Setting it up -> Step 1"
+- SAP S-User to download SAP JCo – see “Setting it up -> Step 2”
 - Existing AWS VPC & Security Group(s), so that AWS Lambda function can be deployed and establish network connectivity towards the SAP system to be monitored (usually port 33\<INSTANCEID\>).
 -	Amazon CloudWatch Detailed Monitoring enabled (1 min granularity). Optional for non-Prod, required for Prod as per SAP Note [1656250](https://launchpad.support.sap.com/#/notes/1656250).
 
