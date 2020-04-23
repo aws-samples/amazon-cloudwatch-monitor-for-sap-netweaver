@@ -9,6 +9,7 @@ phases:
     commands:
       - mkdir sapjco3
       - aws s3 cp s3://sap-sources/SAPJCO sapjco3/ --recursive
+      - ls
       - sam build
     
 #post_build:
