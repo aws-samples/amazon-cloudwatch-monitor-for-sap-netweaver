@@ -40,7 +40,7 @@ task buildZip(type: Zip) {
 }
 
 run {
-    jvmArgs = ['-Djava.library.path=./sapjco3-darwinintel64/']
+    jvmArgs = ['-Djava.library.path=./sapjco3/']
 }
 
 build.dependsOn buildZip

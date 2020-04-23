@@ -5,9 +5,11 @@ phases:
     runtime-versions:
       java: corretto8 #corretto11
       
-build:
-  commands:
-    - sam build
+  build:
+    commands:
+      - mkdir sapjco3
+      - aws s3 cp s3://sap-sources/SAPJCO sapjco3/ --recursive
+      - sam build
     
 #post_build:
 #  commands:
