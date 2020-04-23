@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: SAP Netweaver Monitoring sap-monitor-<SID>
+Description: SAP NetWeaver ABAP Monitoring sap-monitor-<SID>
 
 Globals:
   Function:
@@ -9,7 +9,7 @@ Globals:
 Metadata:
   AWS::ServerlessRepo::Application:
     Name: sap-monitor
-    Description: SAP Netweaver Application Monitoring for Amazon CloudWatch
+    Description: Amazon CloudWatch Monitoring for SAP NetWeaver ABAP based environments.
     Author: frumania
     SpdxLicenseId: Apache-2.0
     LicenseUrl: LICENSE

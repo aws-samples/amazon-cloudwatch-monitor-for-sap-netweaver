@@ -1,6 +1,6 @@
 # Overview
 
-Amazon CloudWatch Monitoring for SAP Netweaver ABAP based environments powered by AWS Lambda.
+Amazon CloudWatch Monitoring for SAP NetWeaver ABAP based environments powered by AWS Lambda.
 
 Please see our blog post [SAP Monitoring: A serverless approach using Amazon CloudWatch](https://amazon.awsapps.com/workdocs/index.html#/document/151c381cb0ac16d54cc0b5b5c42a0cb78558a42fd8d32515b82223bd67aecd34) for more info on the motivation and concept!
 
@@ -14,7 +14,7 @@ Please see our blog post [SAP Monitoring: A serverless approach using Amazon Clo
 - Existing AWS VPC & Security Group(s), so that AWS Lambda function can be deployed and establish network connectivity towards the SAP system to be monitored (usually port 33\<INSTANCEID\>).
 -	Amazon CloudWatch Detailed Monitoring enabled (1 min granularity). Optional for non-Prod, required for Prod as per SAP Note [1656250](https://launchpad.support.sap.com/#/notes/1656250).
 
-## Setup
+## Setting it up
 
 Please follow the [step-by-step guide](docs/0_How_to_setup.md).
 
@@ -24,7 +24,7 @@ Please follow the [step-by-step guide](docs/0_How_to_setup.md).
 
 ![Architecture](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/assets/arch.png?raw=true)
 
-## Output
+The resulting dashboards can look as follows  
 
 ![Dashboard1](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/assets/cw_dashboard1.png?raw=true)
 ![Dashboard2](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/assets/cw_dashboard2.png?raw=true)
@@ -36,19 +36,6 @@ Please follow the [step-by-step guide](docs/0_How_to_setup.md).
 - [Known Issues](docs/Known_Issues.md)  
 - [Collected Metrics](docs/Metrics.md)  
 - [Troubleshooting](docs/Troubleshooting.md)  
-
-## Ideas
-
-- Add further metrics
-  - Number of Dumps (st22)
-  - Number of critical syslog issues (sm21)
-  - Number of failed/pending IDOCs (we02)
-  - Number of aborted/failed jobs (se37)
-  - Odata Statistics
-  - Business Metrics e.g. Open Sales Orders
-  - st03 other tasktypes
-- Add "SIDs" as dimensions for quicker search
-- Allow to include/exclude metrics
 
 ## License
 
