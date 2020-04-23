@@ -2,7 +2,7 @@
 
 Launch SAPGUI and create a new technical user and role (TCODE su01/pfcg) in your default target client (e.g. 000) with the following authorizations.
 
-You can also try and use our role export -> [ZSAPMONITOR.SAP](assets/ZSAPMONITOR.SAP). Go to pfcg and select "Upload" from the menu "Role". Re-generate the profile and assign a user.
+You can also try and use our role export -> [ZSAPMONITOR.SAP](../assets/ZSAPMONITOR.SAP). Go to pfcg and select "Upload" from the menu "Role". Re-generate the profile and assign a user.
 
 - TCODE
   - /SDF/SMON
@@ -20,6 +20,7 @@ You can also try and use our role export -> [ZSAPMONITOR.SAP](assets/ZSAPMONITOR
     - DDIF_FIELDINFO_GET
     - SWNC_GET_WORKLOAD_SNAPSHOT
     - BDL_GET_CENTRAL_TIMESTAMP
+    - RFC_METADATA_GET
 - S_ADMI_FCD
   - S_ADMI_FCD
     - PADM

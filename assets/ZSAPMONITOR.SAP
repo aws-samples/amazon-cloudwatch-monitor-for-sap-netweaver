@@ -1,7 +1,7 @@
-DATE                                              20200409                                          063434
+DATE                                              20200423                                          153553
 RELEASE                                           753
 LOADED_AGRS                                       ZSAPMONITOR
-AGR_DEFINE                                        000ZSAPMONITOR                                                 DEVELOPER   20200408085327000000000000000DEVELOPER   20200408110052000000000000000
+AGR_DEFINE                                        000ZSAPMONITOR                                                 DEVELOPER   20200408085327000000000000000DEVELOPER   20200423153520000000000000000
 AGR_TCODES                                        000ZSAPMONITOR                   TR/SDF/SMON                                        X 00000
 AGR_TCODES                                        000ZSAPMONITOR                   TRSM50                                             X 00000
 AGR_TCODES                                        000ZSAPMONITOR                   TRST03                                             X 00000
@@ -42,12 +42,13 @@ AGR_1251                                          000ZSAPMONITOR                
 AGR_1251                                          000ZSAPMONITOR                   000027S_DATASET T-HB53000100    ACTVT                                                                                     SX O000000
 AGR_1251                                          000ZSAPMONITOR                   000028S_BTCH_ADMT-HB53000100    BTCADMIN  Y                                                                               U  O000000
 AGR_1251                                          000ZSAPMONITOR                   000029S_RFC     T-HB53000100    RFC_NAME  BDL_GET_CENTRAL_TIMESTAMP                                                       U  O000000
+AGR_1251                                          000ZSAPMONITOR                   000030S_RFC     T-HB53000100    RFC_NAME  RFC_METADATA_GET                                                                U  O000000
 AGR_TEXTS                                         000ZSAPMONITOR                   E00000SAP Monitoring via Amazon CloudWatch
 AGR_FLAGS                                         000ZSAPMONITOR                   COLL_AGR  DEVELOPER   20200408085327DEVELOPER   20200408085327
 AGR_FLAGS                                         000ZSAPMONITOR                   DEVCLASS  DEVELOPER   20200408085327DEVELOPER   20200408085327
 AGR_FLAGS                                         000ZSAPMONITOR                   MASTER_LANDEVELOPER   20200408085327DEVELOPER   20200408085327E
 AGR_FLAGS                                         000ZSAPMONITOR                   RESP_USER DEVELOPER   20200408085327DEVELOPER   20200408085327
-AGR_FLAGS                                         000ZSAPMONITOR                   FORCE_MIX DEVELOPER   20200408085718DEVELOPER   20200408110050
+AGR_FLAGS                                         000ZSAPMONITOR                   FORCE_MIX DEVELOPER   20200408085718DEVELOPER   20200423153518
 AGR_HIER                                          000ZSAPMONITOR                   0000000200000001 00000010TR/SDF/SMON                                       01                                X                                         0000000000
 AGR_HIER                                          000ZSAPMONITOR                   0000000300000001 00000020TRST03                                            01                                X                                         0000000000
 AGR_HIER                                          000ZSAPMONITOR                   0000000400000001 00000030TRSM50                                            01                                X                                         0000000000
@@ -61,5 +62,5 @@ AGR_HIERT                                         000ZSAPMONITOR                
 AGR_HIERT                                         000ZSAPMONITOR                   I00000004Riepilogo processo di lavoro
 AGR_HIERT                                         000ZSAPMONITOR                   N00000004Work-process-overzicht
 AGR_TIME                                          000ZSAPMONITOR                   MENU      DEVELOPER   20200408085435000000000000000DEVELOPER   20200408093202000000000000000
-AGR_TIME                                          000ZSAPMONITOR                   PROFILE   DEVELOPER   20200408085718000000000000000DEVELOPER   20200408110050000000000000000
+AGR_TIME                                          000ZSAPMONITOR                   PROFILE   DEVELOPER   20200408085718000000000000000DEVELOPER   20200423153518000000000000000
 AGR_LSD                                           000ZSAPMONITOR                                                 E

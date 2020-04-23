@@ -22,7 +22,7 @@ Please follow the [step-by-step guide](docs/Setting_it_up.md).
 
 ## Architecture
 
-**Note:** You will have to deploy a single instance of this application per SAP System ID!
+**Note:** You will have to deploy a single instance of this application per SAP System ID! 
 
 ![Architecture](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/assets/arch.png?raw=true)
 
