@@ -1,17 +1,17 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: SAP Netweaver Monitoring sap-monitor-<SID>
+Description: SAP NetWeaver ABAP Monitoring sap-monitor-<SID>
 Globals:
   Function:
     Timeout: 60
 Metadata:
   AWS::ServerlessRepo::Application:
     Name: sap-monitor
-    Description: SAP Netweaver Application Monitoring for Amazon CloudWatch
+    Description: Amazon CloudWatch Monitoring for SAP NetWeaver ABAP based environments.
     Author: frumania
     SpdxLicenseId: Apache-2.0
     LicenseUrl: s3://sap-monitor/34400b68072d710fecd0a2940a0d1658
-    ReadmeUrl: s3://sap-monitor/3165d788781dfa994eecaddbd95913d9
+    ReadmeUrl: s3://sap-monitor/b98eb7e7c381a074119acb54c82732e1
     Labels:
     - sap
     - netweaver

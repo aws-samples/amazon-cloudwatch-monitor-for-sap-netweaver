@@ -9,10 +9,10 @@ build:
   commands:
     - sam build
     
-post_build:
-  commands:
-    - sam package --output-template-file packaged.yml --s3-bucket sap-monitor
-    - sam publish --template packaged.yml --region eu-central-1
+#post_build:
+#  commands:
+    #- sam package --output-template-file packaged.yml --s3-bucket sap-monitor
+    #- sam publish --template packaged.yml --region eu-central-1
     #- sam publish --template packaged.yml --region eu-west-1
     #- sam publish --template packaged.yml --region us-east-1
     #- sam publish --template packaged.yml --region us-east-2
