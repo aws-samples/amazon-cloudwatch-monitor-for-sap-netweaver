@@ -7,10 +7,10 @@ You can also try and use our role export -> [ZSAPMONITOR.SAP](assets/ZSAPMONITOR
 - TCODE
   - /SDF/SMON
   - st03
-  - m50
+  - sm50
 - S_RFC
   - RFC_TYPE: Function Module
-  - CTVT: Execute (16)
+  - ACTVT: Execute (16)
   - RFC_NAME:
     - /SDF/SMON_GET_SMON_RUNS 
     - /SDF/SMON_ANALYSIS_READ

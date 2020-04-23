@@ -1,15 +1,14 @@
 # Overview
 
-SAP Application Monitoring Solution based on Amazon CloudWatch powered by AWS Lambda
+Amazon CloudWatch Monitoring for SAP Netweaver ABAP based environments powered by AWS Lambda.
 
-See also our blog post [SAP Monitoring: A serverless approach using Amazon CloudWatch](https://amazon.awsapps.com/workdocs/index.html#/document/151c381cb0ac16d54cc0b5b5c42a0cb78558a42fd8d32515b82223bd67aecd34) for more info on the motivation and concept!
+Please see our blog post [SAP Monitoring: A serverless approach using Amazon CloudWatch](https://amazon.awsapps.com/workdocs/index.html#/document/151c381cb0ac16d54cc0b5b5c42a0cb78558a42fd8d32515b82223bd67aecd34) for more info on the motivation and concept!
 
 ## Prerequisites
 
-- AWS Account
 - SAP NetWeaver ABAP 7.4 or higher (ECC, S4, BW, ...), running on AWS
-  - SAP Component ST-PI Release 740 SP 08 or higher (Usage of [/SDF/SMON](https://wiki.scn.sap.com/wiki/display/CPP/All+about+SMON))
-  - SAP Statistical Records enabled (TCODE stad/st03), should usually be active by default, if not check SAP Note [2369736](https://launchpad.support.sap.com/#/notes/0002369736).
+  - SAP Component ST-PI Release 740 SP 08 or higher (due to usage of [/SDF/SMON](https://wiki.scn.sap.com/wiki/display/CPP/All+about+SMON))
+  - SAP Statistical Records enabled (TCODE stad/st03), usually by default, if not check SAP Note [2369736](https://launchpad.support.sap.com/#/notes/0002369736).
   - SAP RFC User & PW with authorizations - see "How to -> Step 1"
 - SAP S-User to download SAP JCo – see “How to -> Step 2”
 - Existing AWS VPC & Security Group(s), so that AWS Lambda function can be deployed and establish network connectivity towards the SAP system to be monitored (usually port 33\<INSTANCEID\>).
@@ -23,12 +22,12 @@ Please follow the [step-by-step guide](docs/0_How_to_setup.md).
 
 **Note:** You will have to deploy a single instance of this application per SAP System ID!
 
-![Imgur](https://i.imgur.com/gXNwyF9.png)
+![Architecture](assets/arch.png)
 
 ## Output
 
-![Imgur](assets/cw_dashboard1.png)
-![Imgur](assets/cw_dashboard2.png)
+![Dashboard1](assets/cw_dashboard1.png)
+![Dashboard2](assets/cw_dashboard2.png)
 
 ## Captured Metrics
 
