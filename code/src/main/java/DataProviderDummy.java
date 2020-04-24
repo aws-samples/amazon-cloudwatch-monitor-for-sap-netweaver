@@ -30,7 +30,9 @@ public class DataProviderDummy {
         Config config = Config.getInstance();
 
         if (config.iteration % frequency == 0) { //execute every iteration/function call
+
             //Logic goes here
+            
         }
     }
 }

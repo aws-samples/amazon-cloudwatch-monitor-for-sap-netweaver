@@ -18,7 +18,7 @@ Please see our blog post [SAP Monitoring: A serverless approach using Amazon Clo
 
 ## Setting it up
 
-Please follow the [step-by-step guide](docs/Setting_it_up.md).
+Please follow the [step-by-step guide](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/docs/Setting_it_up.md).
 
 ## Architecture
 
@@ -33,11 +33,11 @@ The resulting dashboards can look as follows
 
 ## Further Read
 
-- [Cost Considerations](docs/Cost_Considerations.md)  
-- [Performance & Overhead Considerations](docs/Performance_Considerations.md)  
-- [Known Issues](docs/Known_Issues.md)  
-- [Collected Metrics](docs/Metrics.md)  
-- [Troubleshooting](docs/Troubleshooting.md)  
+- [Cost Considerations](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/docs/Cost_Considerations.md)  
+- [Performance & Overhead Considerations](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/docs/Performance_Considerations.md)  
+- [Known Issues](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/docs/Known_Issues.md)  
+- [Collected Metrics](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/docs/Metrics.md)  
+- [Troubleshooting](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/docs/Troubleshooting.md)  
 
 ## License
 
