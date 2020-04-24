@@ -1,6 +1,7 @@
 # Local Development
 
-If you would like to run and build the project locally, please make sure to download the latest [SAP JCo](https://support.sap.com/en/product/connectors/jco.html) for your platform and place them into the **code/jars** directory.
+If you would like to build and run the project locally, please make sure to download the latest [SAP JCo](https://support.sap.com/en/product/connectors/jco.html) for your platform and place them into the **code/jars** directory.  
+Also you need to install [aws sam](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html) and [gradle](https://gradle.org/).
 
 Run the following command to trigger a build
 
@@ -28,9 +29,10 @@ Instead go and deploy it to your environment.
 
 ## Deploy
 
-Make sure to remove the sapjco libs from the .aws-sam directory before deployment, as libs should be served from [Lambda Layer](Create_AWS_Lambda_layer_for_SAP_Jco.md)
+Make sure to remove the sapjco libs from the .aws-sam directory before deployment.  
+Libs should be served from [Lambda Layer](Create_AWS_Lambda_layer_for_SAP_Jco.md)
 
-Deploy Script, please **adjust**!
+A simple deploy script can be found below, make sure to **adjust**!
 
 ```bash
 $ rm .aws-sam/build/CWLambdaFunction/lib/libsapjco3.dylib
