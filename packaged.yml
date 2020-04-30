@@ -8,17 +8,17 @@ Metadata:
   AWS::ServerlessRepo::Application:
     Name: sap-monitor
     Description: Amazon CloudWatch Monitoring for SAP NetWeaver ABAP based environments.
-    Author: frumania
+    Author: mtoerpe
     SpdxLicenseId: Apache-2.0
     LicenseUrl: s3://sap-monitor/34400b68072d710fecd0a2940a0d1658
-    ReadmeUrl: s3://sap-monitor/b98eb7e7c381a074119acb54c82732e1
+    ReadmeUrl: s3://sap-monitor/72e036cb211b4590419103f61c0a1d99
     Labels:
     - sap
     - netweaver
     - monitoring
     - cloudwatch
     HomePageUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver
-    SemanticVersion: 1.0.0
+    SemanticVersion: 1.0.1
     SourceCodeUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver
   AWS::CloudFormation::Interface:
     ParameterGroups:
@@ -157,7 +157,7 @@ Resources:
   CWLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://sap-monitor/e81b59e5fe6fb909cd979affe1678176
+      CodeUri: s3://sap-monitor/cb38db0c95ea98778f705165201468ee
       Layers:
       - Fn::Sub:
         - arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:sapjco:${LLY}
@@ -174,7 +174,7 @@ Resources:
         - SAP Monitoring for <${SID}>
         - SID:
             Ref: SAPSIDParameter
-      Runtime: java8
+      Runtime: java11
       MemorySize: 512
       Timeout: 30
       VpcConfig:

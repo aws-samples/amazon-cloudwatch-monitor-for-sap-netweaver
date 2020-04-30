@@ -366,15 +366,17 @@ public class DataProviderSMON {
             result.setRow(i);
 
             final String SERVER = result.getString("SERVER");
+            
+            if (SERVER != "") {
+                final JCoFieldIterator iter = result.getFieldIterator();
+                while (iter.hasNextField()) {
+                    final JCoField f = iter.nextField();
 
-            final JCoFieldIterator iter = result.getFieldIterator();
-            while (iter.hasNextField()) {
-                final JCoField f = iter.nextField();
+                    final String NAME = f.getName();
+                    final Object VALUE = result.getValue(f.getName());
 
-                final String NAME = f.getName();
-                final Object VALUE = result.getValue(f.getName());
-
-                reportResult(SERVER, NAME, VALUE);
+                    reportResult(SERVER, NAME, VALUE);
+                }
             }
         }
 
