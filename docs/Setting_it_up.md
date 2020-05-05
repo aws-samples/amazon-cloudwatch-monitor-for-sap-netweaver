@@ -61,7 +61,7 @@ By the way, if desired, CloudWatch even allows you to embed graphs into your web
 
 You can now create alarms and receive notifications, once desired thresholds are exceeded.
 
-Start with a simple alarm to monitor the sap-monitor itself = metric “UPTIME”:
+Start with a simple alarm to monitor the sap-monitor itself = Lambda metric **sap-monitor-\<SID\>** -> "Errors":
  
 ![CWAlarm](../assets/cw_alarm.png)
 

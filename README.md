@@ -40,8 +40,8 @@ The resulting dashboards can look as follows
 
 ## License
 
-This project is licensed under the Apache-2.0 License.
+This project is licensed under  [![Apache 2](https://img.shields.io/badge/license-Apache%202-blue.svg)](./LICENSE)
 
-This solution requires the [SAP Java Connector](https://support.sap.com/en/product/connectors.html) from SAP SE to be added manually.
+This solution requires the [SAP Java Connector](https://support.sap.com/en/product/connectors.html) from SAP SE to be added [manually](/docs/Create_AWS_Lambda_layer_for_SAP_Jco.md).
   
 All rights reserved.

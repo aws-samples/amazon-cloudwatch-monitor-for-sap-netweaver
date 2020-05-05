@@ -72,14 +72,14 @@ public class DataProviderSMON {
         }
     }
 
-    public void reportUptime(final Boolean healthy)
+    /*public void reportUptime(final Boolean healthy)
     {
         if (healthy) {
             utils.collectResultEmbedded(config.destination_name, "UPTIME",100.0);
         } else {
             utils.collectResultEmbedded(config.destination_name, "UPTIME",0.0);
         }
-    }
+    }*/
 
     public void reportResult(final String SERVER, final String NAME, final Object VALUE)
     {
@@ -283,10 +283,10 @@ public class DataProviderSMON {
             }
 
             if (config.guid == null) {
-                reportUptime(false);
+                //reportUptime(false);
                 throw new RuntimeException("No active /SDF/SMON job with description " + config.sdfmon_name + " found! Please make sure a valid job is scheduled in transaction /SDF/SMON!");
             } else {
-                reportUptime(true);
+                //reportUptime(true);
             }
         }
     }
@@ -337,10 +337,10 @@ public class DataProviderSMON {
         final long startTime = System.currentTimeMillis();
         try {
             function_read.execute(destination);
-            reportUptime(true);
+            //reportUptime(true);
         } catch (final AbapException e) {
             System.out.println(e.toString());
-            reportUptime(false);
+            //reportUptime(false);
             throw new RuntimeException("Connection lost: " + e.toString());
         }
 

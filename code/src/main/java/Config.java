@@ -130,8 +130,8 @@ public final class Config {
             final com.amazonaws.services.secretsmanager.AWSSecretsManager client  = AWSSecretsManagerClientBuilder.standard().build();
             
             String secret = null;
-            final com.amazonaws.services.secretsmanager.model.GetSecretValueRequest getSecretValueRequest = new com.amazonaws.services.secretsmanager.model.GetSecretValueRequest()
-                            .withSecretId(secret_key);
+            final com.amazonaws.services.secretsmanager.model.GetSecretValueRequest getSecretValueRequest = 
+            new com.amazonaws.services.secretsmanager.model.GetSecretValueRequest().withSecretId(secret_key);
             com.amazonaws.services.secretsmanager.model.GetSecretValueResult getSecretValueResult = null;
 
             try {

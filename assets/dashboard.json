@@ -4,48 +4,25 @@
             "type": "metric",
             "x": 0,
             "y": 0,
-            "width": 6,
+            "width": 3,
             "height": 3,
             "properties": {
                 "metrics": [
-                    [ "sap-monitor", "UPTIME", "by SID", "HDB" ]
+                    [ "sap-monitor", "UPTIME", "by SID", "HDB", { "id": "m3", "visible": false } ],
+                    [ { "expression": "100-(m1*0+(1-AVG(CEIL(ABS(m1-1)/(MAX(m1+1))))))*100", "label": "%", "id": "e1", "region": "eu-central-1" } ],
+                    [ "AWS/Lambda", "Errors", "FunctionName", "sap-monitor-HDB", { "id": "m1", "visible": false } ]
                 ],
                 "view": "singleValue",
                 "region": "eu-central-1",
                 "title": "Availability %",
-                "period": 2592000,
+                "period": 60,
                 "stat": "Average"
             }
         },
         {
             "type": "metric",
-            "x": 12,
-            "y": 0,
-            "width": 12,
-            "height": 3,
-            "properties": {
-                "metrics": [
-                    [ "sap-monitor", "PING", "by SID", "HDB" ]
-                ],
-                "view": "timeSeries",
-                "stacked": false,
-                "region": "eu-central-1",
-                "period": 60,
-                "stat": "Average",
-                "yAxis": {
-                    "left": {
-                        "min": 0,
-                        "label": "Milliseconds",
-                        "showUnits": false
-                    }
-                },
-                "title": "Monitor Ping (ms)"
-            }
-        },
-        {
-            "type": "metric",
             "x": 0,
-            "y": 3,
+            "y": 6,
             "width": 12,
             "height": 6,
             "properties": {
@@ -77,7 +54,7 @@
         {
             "type": "metric",
             "x": 0,
-            "y": 9,
+            "y": 18,
             "width": 12,
             "height": 6,
             "properties": {
@@ -110,7 +87,7 @@
         {
             "type": "metric",
             "x": 12,
-            "y": 3,
+            "y": 6,
             "width": 12,
             "height": 6,
             "properties": {
@@ -137,26 +114,8 @@
         },
         {
             "type": "metric",
-            "x": 6,
-            "y": 0,
-            "width": 6,
-            "height": 3,
-            "properties": {
-                "metrics": [
-                    [ "AWS/Lambda", "Errors", "FunctionName", "sap-monitor-HDB" ]
-                ],
-                "view": "timeSeries",
-                "stacked": false,
-                "region": "eu-central-1",
-                "period": 60,
-                "stat": "Average",
-                "title": "Monitor Errors"
-            }
-        },
-        {
-            "type": "metric",
             "x": 12,
-            "y": 9,
+            "y": 0,
             "width": 12,
             "height": 6,
             "properties": {
@@ -180,8 +139,8 @@
         },
         {
             "type": "metric",
-            "x": 0,
-            "y": 15,
+            "x": 12,
+            "y": 18,
             "width": 12,
             "height": 6,
             "properties": {
@@ -207,8 +166,8 @@
         },
         {
             "type": "metric",
-            "x": 12,
-            "y": 15,
+            "x": 0,
+            "y": 12,
             "width": 12,
             "height": 6,
             "properties": {
@@ -232,8 +191,8 @@
         },
         {
             "type": "metric",
-            "x": 0,
-            "y": 21,
+            "x": 12,
+            "y": 15,
             "width": 12,
             "height": 3,
             "properties": {
@@ -266,7 +225,7 @@
         {
             "type": "metric",
             "x": 12,
-            "y": 21,
+            "y": 12,
             "width": 12,
             "height": 3,
             "properties": {
@@ -284,20 +243,34 @@
         },
         {
             "type": "metric",
-            "x": 0,
-            "y": 24,
-            "width": 24,
-            "height": 3,
+            "x": 3,
+            "y": 0,
+            "width": 9,
+            "height": 6,
             "properties": {
                 "metrics": [
-                    [ "AWS/EC2", "CPUUtilization", "InstanceId", "i-0053020c0ff8770c7" ]
+                    [ "AWS/Lambda", "Errors", "FunctionName", "sap-monitor-HDB", "Resource", "sap-monitor-HDB", { "id": "errors", "stat": "Sum", "color": "#d13212", "visible": false } ],
+                    [ ".", "Invocations", ".", ".", ".", ".", { "id": "invocations", "stat": "Sum", "visible": false } ],
+                    [ { "expression": "100 - 100 * errors / MAX([errors, invocations])", "label": "Success rate (%)", "id": "availability", "yAxis": "right", "region": "eu-central-1" } ],
+                    [ "AWS/Lambda", "Duration", "FunctionName", "sap-monitor-HDB", { "id": "m1", "color": "#e377c2" } ]
                 ],
-                "view": "timeSeries",
                 "region": "eu-central-1",
-                "title": "HANA CPU Utilization (CloudWatch)",
+                "title": "MONITOR Status",
+                "yAxis": {
+                    "right": {
+                        "max": 100,
+                        "min": 0
+                    },
+                    "left": {
+                        "min": 0,
+                        "showUnits": false
+                    }
+                },
+                "view": "timeSeries",
                 "stacked": false,
                 "period": 60,
-                "stat": "Average"
+                "stat": "Average",
+                "liveData": true
             }
         }
     ]

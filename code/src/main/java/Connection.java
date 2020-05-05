@@ -28,7 +28,7 @@ public class Connection {
 
     static Config config = Config.getInstance();
 
-    public void reportUptime(final Boolean healthy) {
+    /*public void reportUptime(final Boolean healthy) {
         Utils utils = new Utils();
 
         if (healthy) {
@@ -38,7 +38,7 @@ public class Connection {
         }
 
         utils.submitResultsEmbedded("UPTIME");
-    }
+    }*/
 
     public void connect() throws JCoException {
         if (!config.connected) {
@@ -55,10 +55,10 @@ public class Connection {
                         System.out.println();
 
                         config.connected = true;
-                        reportUptime(true);
+                        //reportUptime(true);
                     }
                     catch (final JCoException e) {
-                        reportUptime(false);
+                        //reportUptime(false);
                         System.out.println(e);
                         throw new RuntimeException("Connection could not be established! Please verify the host & instance config in AWS Secrets Manager and make sure your server can be reached (e.g. adjust Security Group). You can force a function config reset, by passing '{ \"refresh\": \"true\" } ' as test/event parameters!");
                     }
@@ -75,7 +75,7 @@ public class Connection {
             
                 System.out.println(ex);
                 config.connected = false;
-                reportUptime(false);
+                //reportUptime(false);
                 throw new RuntimeException("Connection could not be established! Please verify the host & instance config in AWS Secrets Manager and make sure your server can be reached (e.g. adjust Security Group). You can force a function config reset, by passing '{ \"refresh\": \"true\" } ' as test/event parameters!");
 
             } catch (final InterruptedException e) {
