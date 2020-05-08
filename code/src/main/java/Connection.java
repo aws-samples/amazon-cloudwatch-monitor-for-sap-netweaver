@@ -40,6 +40,7 @@ public class Connection {
         utils.submitResultsEmbedded("UPTIME");
     }*/
 
+    
     public void connect() throws JCoException {
         if (!config.connected) {
             final ExecutorService executor = Executors.newCachedThreadPool();

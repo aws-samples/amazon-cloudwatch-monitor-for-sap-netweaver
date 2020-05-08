@@ -10,7 +10,8 @@ Please see our blog post [SAP Monitoring: A serverless approach using Amazon Clo
 
 - SAP NetWeaver ABAP 7.4 or higher (ECC, S4, BW, ...)
   - SAP Component ST-PI Release 740 SP 08 or higher.
-  - SAP statistical records enabled (transaction codes stad / st03). If not active by default, please check [SAP note 2369736](https://launchpad.support.sap.com/#/notes/0002369736).
+  - SAP statistical records enabled (transaction codes stad / st03).  
+  If not active by default, please check [SAP note 2369736](https://launchpad.support.sap.com/#/notes/0002369736).
   - SAP RFC user and password - see "Setting it up -> Step 1"
 - SAP S-User to download SAP Java Connector – see “Setting it up -> Step 2”
 - Amazon VPC security group(s) allowing inbound/outbound traffic on port 33\<instanceID\>, so that the Lambda function can connect via the private subnet to the SAP system to be monitored – see also previous section “Architecture.”
