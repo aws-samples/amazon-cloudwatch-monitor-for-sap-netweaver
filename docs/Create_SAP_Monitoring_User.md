@@ -1,4 +1,4 @@
-# Create SAP User for Monitoring
+# Create an SAP User for Monitoring
 
 Launch SAPGUI and create a new technical user and role (TCODE su01/pfcg) in your default target client (e.g. 000) with the following authorizations.
 

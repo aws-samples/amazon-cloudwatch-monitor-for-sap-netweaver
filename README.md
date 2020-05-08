@@ -4,7 +4,7 @@
 
 Amazon CloudWatch Monitoring for SAP NetWeaver ABAP-based environments powered by AWS Lambda.
 
-Please see our blog post [SAP Monitoring: A serverless approach using Amazon CloudWatch](https://amazon.awsapps.com/workdocs/index.html#/document/151c381cb0ac16d54cc0b5b5c42a0cb78558a42fd8d32515b82223bd67aecd34) for more info on the motivation and concept!
+Please see our blog post [SAP Monitoring: A serverless approach using Amazon CloudWatch](https://aws.amazon.com/blogs/awsforsap/sap-monitoring-a-serverless-approach-using-amazon-cloudwatch/) for more info on the motivation and concept!
 
 ## Prerequisites
 

@@ -1,4 +1,4 @@
-# Create an AWS Lambda layer for SAP JCo
+# Create a Lambda layer for SAP JCo
 
 **Note:** This activity has to be done **once** only, regardless of any subsequent deployments.
 
