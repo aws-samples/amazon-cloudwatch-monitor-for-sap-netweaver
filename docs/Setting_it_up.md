@@ -1,20 +1,20 @@
-# How to setup
+# Setting it up
 
-## Step 1: Create SAP User for Monitoring (SAPGUI)
+## Step 1: Create an SAP User for Monitoring (SAPGUI)
 
 Please refer to the [step-by-step guide](Create_SAP_Monitoring_User.md) and maintained list of required authorizations.
 
-## Step 2: Create an AWS Lambda layer for SAP JCo (console)
+## Step 2: Create a Lambda layer for SAP JCo (console)
 
 This activity has to be done once only, regardless of any subsequent deployments. 
 
 Please refer to the [step-by-step guide](Create_AWS_Lambda_layer_for_SAP_Jco.md)
 
-## Step 3: Deploy Solution (console)
+## Step 3: Deploy the solution (console)
 
-For most AWS regions you can easily deploy the solution via the AWS Serverless Application Repository, by searching for sap-monitor. Make sure to tick Show apps that create custom IAM roles. 
+For most AWS Regions, you can easily deploy the solution with the [AWS Serverless Application Repository](https://eu-central-1.console.aws.amazon.com/serverlessrepo/home?region=eu-central-1#/available-applications) by searching for **sap-monitor**. Make sure to tick **Show apps that create custom IAM roles**.
 
-If not available in your region, please deploy manually by running the following AWS Cloud Formation template.
+If this is not available in your Region, please deploy it manually by running the following AWS CloudFormation [template](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/packaged.yml).
 
 ![CWAlarm](../assets/sar.png)
 
@@ -28,9 +28,13 @@ In case of issues, please refer to the [Troubleshooting](Troubleshooting.md) gui
 
 If you like to start /SDF/SMON yourself instead of automatically through the monitor, check the documentation for [manual scheduling](Schedule_SDF_SMON_manually.md).
 
-## Step 4: Test function (console)
+## Step 4: Test the function (console)
 
-Open the AWS Lambda console, select sap-monitor-<SID> and choose Test (payload can be any). The expected output is shown below:
+Open the Lambda console, select **sap-monitor-\<SID\>** and choose **Test**. In the **Configure test event** page, choose **Create new test event** and enter *{“refresh”:true}*:
+
+![CWAlarm](../assets/lambda0.png)
+
+Hit **Test**. The expected output is shown below:
 
 ![CWAlarm](../assets/lambda.png)
 
@@ -38,11 +42,11 @@ In case of issues, refer to the [Troubleshooting](Troubleshooting.md) guide.
 
 ## Step 5: Enable the Scheduler (console)
 
-Open the Amazon CloudWatch console. In the navigation pane, choose Rules. Select the rule sap-monitor-<SID> and choose Enable as Actions, so that it runs periodically: 
+Open the Amazon CloudWatch console. In the navigation pane, choose **Rules**. Select the rule **sap-monitor-\<SID\>** and choose **Enable** as **Actions**, so that it runs periodically: 
 
 ![CWAlarm](../assets/scheduler.png)
 
-## Step 6: Create dashboard (console)
+## Step 6: Create a dashboard (console)
 
 Open the Amazon CloudWatch console. In the navigation pane, choose Metrics. Under Custom Namespaces, you should now find your custom metrics, arranged by SID. You can select any metric and preview its output.
 
@@ -55,14 +59,14 @@ The resulting dashboards can look as follows
 ![Dashboard1](../assets/cw_dashboard1.png)
 ![Dashboard2](../assets/cw_dashboard2.png)
 
-By the way, if desired, CloudWatch even allows you to embed graphs into your webpage.
+By the way, if desired, CloudWatch even allows you to [embed graphs](https://aws.amazon.com/de/blogs/devops/building-an-amazon-cloudwatch-dashboard-outside-of-the-aws-management-console/) into your webpage.
 
 ## Step 7: Create alarms
 
 You can now create alarms and receive notifications, once desired thresholds are exceeded.
 
-Start with a simple alarm to monitor the sap-monitor itself = Lambda metric **sap-monitor-\<SID\>** -> "Errors":
+Start with a simple alarm to monitor the sap-monitor itself, by selecting the Lambda metric **Errors** for function **sap-monitor-\<SID\>** as follows
  
 ![CWAlarm](../assets/cw_alarm.png)
 
-If you setup a corresponding AWS SNS topic, you can then be notified via email, once the monitoring is failing. Proceed with other alarms for metrics, that you like to closely pay attention to.
+If you set up a corresponding [Amazon Simple Notification Service](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/US_SetupSNS.html) (Amazon SNS) topic, you can choose to be notified via email when the monitoring is failing. Proceed with other alarms for metrics, that you like to closely pay attention to.
