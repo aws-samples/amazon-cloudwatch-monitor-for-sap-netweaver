@@ -16,7 +16,7 @@ Please see our blog post [SAP Monitoring: A serverless approach using Amazon Clo
 - SAP S-User to download SAP Java Connector – see “Setting it up -> Step 2”
 - Amazon VPC security group(s) allowing inbound/outbound traffic - see also section “Architecture”:
   - Lambda + SAP@EC2: Port **33\<instanceID\>**, so that the Lambda function can connect via the private subnet to the SAP system to be monitored
-  - Lambda: Additionally port **443** to call AWS Secrets Manager. For private VPC without NAT Gateway make sure to create a [private endpoint](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html)!
+  - Lambda: Additionally port **443** to call AWS Secrets Manager and CloudWatch APIs. In case of a private subnet without NAT Gateway make sure to create respective [private endpoints](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html)!
 - For Production systems, make sure to enable CloudWatch detailed monitoring according to [SAP note 1656250](https://launchpad.support.sap.com/#/notes/1656250).
 
 ## Setting it up
