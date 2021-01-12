@@ -14,7 +14,7 @@ Please refer to the [step-by-step guide](Create_AWS_Lambda_layer_for_SAP_Jco.md)
 
 For most AWS Regions, you can easily deploy the solution with the [AWS Serverless Application Repository](https://eu-central-1.console.aws.amazon.com/serverlessrepo/home?region=eu-central-1#/available-applications) by searching for **sap-monitor**. Make sure to tick **Show apps that create custom IAM roles**.
 
-If this is not working in your Region, please deploy it manually by running the following AWS CloudFormation template
+If this is not working in your Region, please deploy it manually by downloading and running the following AWS CloudFormation template
 - [Frankfurt (eu-central-1)](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/packaged.yml)
   
   
