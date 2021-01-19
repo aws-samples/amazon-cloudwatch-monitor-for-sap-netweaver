@@ -13,6 +13,7 @@
   permissions and limitations under the License.
 */
 
+
 import com.amazonaws.services.lambda.runtime.Context;
 //import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.sap.conn.jco.JCoException;
