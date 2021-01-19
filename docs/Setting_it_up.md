@@ -16,6 +16,8 @@ For most AWS Regions, you can easily deploy the solution with the [AWS Serverles
 
 If this is not working in your Region, please deploy it manually by downloading and running the following AWS CloudFormation template
 - [Frankfurt (eu-central-1)](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/packaged.yml)
+- [North Virginia (us-east-1)](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/packaged-us-east-1.yml)
+- [Oregon (us-west-2)](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/packaged-us-west-2.yml)
   
   
 ![CWAlarm](../assets/sar.png)

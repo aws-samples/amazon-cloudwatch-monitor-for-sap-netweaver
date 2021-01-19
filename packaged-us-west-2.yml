@@ -157,7 +157,7 @@ Resources:
   CWLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://sap-monitor/7134c3315afdc181df0065a6d991e348
+      CodeUri: s3://sap-monitor-us-west-2/7134c3315afdc181df0065a6d991e348
       Layers:
       - Fn::Sub:
         - arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:sapjco:${LLY}
