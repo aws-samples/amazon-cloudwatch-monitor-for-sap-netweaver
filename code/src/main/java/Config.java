@@ -153,12 +153,25 @@ public final class Config {
                 final Properties connectProperties = new Properties();
                 destination_name = obj.getString("name");
                 connectProperties.setProperty(DestinationDataProvider.JCO_DEST, obj.getString("name"));
-                connectProperties.setProperty(DestinationDataProvider.JCO_ASHOST, obj.getString("host"));
-                connectProperties.setProperty(DestinationDataProvider.JCO_SYSNR,  obj.getString("sys_id"));
                 connectProperties.setProperty(DestinationDataProvider.JCO_CLIENT, obj.getString("client"));
                 connectProperties.setProperty(DestinationDataProvider.JCO_USER,   obj.getString("user"));
                 connectProperties.setProperty(DestinationDataProvider.JCO_PASSWD, obj.getString("password"));
                 connectProperties.setProperty(DestinationDataProvider.JCO_LANG,   obj.getString("language"));
+
+
+                if(obj.has("mshost") && obj.has("msport") && obj.has("group"))
+                { 
+                    System.out.println("Connect via SAP Message Server!");
+                    connectProperties.setProperty(DestinationDataProvider.JCO_MSHOST, obj.getString("mshost"));
+                    connectProperties.setProperty(DestinationDataProvider.JCO_MSSERV, obj.getString("msport"));
+                    connectProperties.setProperty(DestinationDataProvider.JCO_GROUP, obj.getString("group"));
+                }
+                else
+                {
+                    connectProperties.setProperty(DestinationDataProvider.JCO_ASHOST, obj.getString("host"));
+                    connectProperties.setProperty(DestinationDataProvider.JCO_SYSNR,  obj.getString("sys_id"));
+                }
+
                 username = obj.getString("user");
                 sdfmon_name = obj.getString("/SDF/SMON_DESC");
                 Integer sdfmon_schedule_tmp = obj.getInt("/SDF/SMON_SCHEDULE");
