@@ -11,14 +11,14 @@ Metadata:
     Author: mtoerpe
     SpdxLicenseId: Apache-2.0
     LicenseUrl: s3://sap-monitor/34400b68072d710fecd0a2940a0d1658
-    ReadmeUrl: s3://sap-monitor/69782c3bed13449b55d6de4270ad0a39
+    ReadmeUrl: s3://sap-monitor/b4361f5e5185d3d326b3297c7a2cfad6
     Labels:
     - sap
     - netweaver
     - monitoring
     - cloudwatch
     HomePageUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver
-    SemanticVersion: 1.0.3
+    SemanticVersion: 1.0.4
     SourceCodeUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver
   AWS::CloudFormation::Interface:
     ParameterGroups:
@@ -157,7 +157,7 @@ Resources:
   CWLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://sap-monitor/75eea5e8f4d16a5a5a8d4de760e23fb4
+      CodeUri: s3://sap-monitor/a4f66e6e73d05389e98c7d035957f6b3
       Layers:
       - Fn::Sub:
         - arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:sapjco:${LLY}

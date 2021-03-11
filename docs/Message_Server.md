@@ -14,4 +14,4 @@ Make sure, that the logon group is also enabled for external RFC communcation:
 
 ![Imgur](../assets/msg_server.png)
 
-Finally, force a config reload of the Lambda/monitor, as outlined here: [Troubleshooting](Troubleshooting.md)
+Finally, force a config reload of the Lambda/monitor, as outlined here: [Troubleshooting](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/docs/Troubleshooting.md)

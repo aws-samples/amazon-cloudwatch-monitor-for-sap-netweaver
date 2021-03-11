@@ -158,10 +158,10 @@ public final class Config {
                 connectProperties.setProperty(DestinationDataProvider.JCO_PASSWD, obj.getString("password"));
                 connectProperties.setProperty(DestinationDataProvider.JCO_LANG,   obj.getString("language"));
 
-
                 if(obj.has("mshost") && obj.has("msport") && obj.has("group"))
                 { 
                     System.out.println("Connect via SAP Message Server!");
+                    
                     connectProperties.setProperty(DestinationDataProvider.JCO_MSHOST, obj.getString("mshost"));
                     connectProperties.setProperty(DestinationDataProvider.JCO_MSSERV, obj.getString("msport"));
                     connectProperties.setProperty(DestinationDataProvider.JCO_GROUP, obj.getString("group"));
