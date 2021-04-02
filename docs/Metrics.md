@@ -4,6 +4,7 @@
 
 **Generic (1 - per SID):**  
 "PING" = SAP Monitor RFC Execution Time (/SDF/SMON)
+"TOTAL_APP_SERVERS" = Number of active SAP Application Servers
 
 **[/SDF/SMON](https://wiki.scn.sap.com/wiki/display/CPP/All+about+SMON) (14 - per Instance), granularity 1 min:**  
 "ACT_WPS" = Number of Active Work Processes  
