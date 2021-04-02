@@ -47,7 +47,7 @@ The resulting dashboards can look as follows
 1.05
 
 - Added metric TOTAL_APP_SERVERS (RFC TH_SERVER_LIST)
-- Added capability to restart /SDF/SMON in case amount of app servers changes
+- Added capability to restart /SDF/SMON in case amount of active app servers changes
 
 1.04
 
