@@ -50,7 +50,7 @@ public final class Config {
 
     public Boolean connected = false;
     public Boolean reset = false;
-    public Boolean debug = false;
+    public Boolean debug = true;
 
     public PropertiesDestinationDataProvider pddp_old;
 
@@ -109,8 +109,10 @@ public final class Config {
 
     public void readSecrets()
     {
-        if( System.getenv("DEBUG") != null) {
+        if(System.getenv("DEBUG") != null) {
             debug = Boolean.parseBoolean(System.getenv("DEBUG"));
+
+            System.out.println("Debug Setting: "+debug.toString());
         }
 
         if (System.getenv("SECRET") != null) {

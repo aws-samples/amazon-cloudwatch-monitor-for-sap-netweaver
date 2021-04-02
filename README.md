@@ -42,6 +42,16 @@ The resulting dashboards can look as follows
 - [Collected Metrics](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/docs/Metrics.md)  
 - [Troubleshooting](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/docs/Troubleshooting.md)  
 
+## Changelog
+
+1.05
+
+- Added capability to restart /SDF/SMON in case amount of app servers changes (RFC TH_SERVER_LIST)
+
+1.04
+
+- Added Connectivity via SAP Message Server
+
 ## License
 
 This project is licensed under  [![Apache 2](https://img.shields.io/badge/license-Apache%202-blue.svg)](./LICENSE)

@@ -8,6 +8,7 @@ You can also try and use our role export -> [ZSAPMONITOR.SAP](../assets/ZSAPMONI
   - /SDF/SMON
   - st03
   - sm50
+  - sm51
 - S_RFC
   - RFC_TYPE: Function Module
   - ACTVT: Execute (16)
@@ -21,6 +22,8 @@ You can also try and use our role export -> [ZSAPMONITOR.SAP](../assets/ZSAPMONI
     - SWNC_GET_WORKLOAD_SNAPSHOT
     - BDL_GET_CENTRAL_TIMESTAMP
     - RFC_METADATA_GET
+    - /SDF/SMON_REORG
+    - TH_SERVER_LIST
 - S_ADMI_FCD
   - S_ADMI_FCD
     - PADM

@@ -1,36 +1,37 @@
 {
     "widgets": [
         {
-            "type": "metric",
-            "x": 0,
-            "y": 0,
+            "height": 6,
             "width": 3,
-            "height": 3,
+            "y": 0,
+            "x": 0,
+            "type": "metric",
             "properties": {
                 "metrics": [
-                    [ "sap-monitor", "UPTIME", "by SID", "HDB", { "id": "m3", "visible": false } ],
-                    [ { "expression": "100-(m1*0+(1-AVG(CEIL(ABS(m1-1)/(MAX(m1+1))))))*100", "label": "%", "id": "e1", "region": "eu-central-1" } ],
+                    [ { "expression": "(1-m1)*100", "label": "%", "id": "e2", "region": "eu-central-1" } ],
                     [ "AWS/Lambda", "Errors", "FunctionName", "sap-monitor-HDB", { "id": "m1", "visible": false } ]
                 ],
                 "view": "singleValue",
                 "region": "eu-central-1",
-                "title": "Availability %",
+                "title": "Availability",
                 "period": 60,
-                "stat": "Average"
+                "stat": "Average",
+                "setPeriodToTimeRange": true,
+                "labels": {
+                    "visible": true
+                }
             }
         },
         {
-            "type": "metric",
-            "x": 0,
-            "y": 6,
-            "width": 12,
             "height": 6,
+            "width": 12,
+            "y": 6,
+            "x": 0,
+            "type": "metric",
             "properties": {
                 "metrics": [
-                    [ "sap-monitor", "USR_TOTAL", "by SID", "HDB_sidapp00_HDB_00" ],
-                    [ ".", "SYS_TOTAL", ".", "." ],
-                    [ ".", "USR_TOTAL", ".", "HDB_sidpas00_HDB_01" ],
-                    [ ".", "SYS_TOTAL", ".", "." ]
+                    [ { "expression": "SEARCH('{\"sap-monitor\",\"by SID\"} HDB AND MetricName=USR_TOTAL', 'Average', 60)", "label": "#", "id": "e1", "region": "eu-central-1" } ],
+                    [ { "expression": "SEARCH('{\"sap-monitor\",\"by SID\"} HDB AND MetricName=SYS_TOTAL', 'Average', 60)", "label": "#", "id": "e2", "region": "eu-central-1" } ]
                 ],
                 "view": "timeSeries",
                 "stacked": false,
@@ -48,25 +49,25 @@
                 "title": "CPU Utilization (st06)",
                 "legend": {
                     "position": "right"
-                }
+                },
+                "liveData": true
             }
         },
         {
-            "type": "metric",
-            "x": 0,
-            "y": 18,
-            "width": 12,
             "height": 6,
+            "width": 12,
+            "y": 18,
+            "x": 0,
+            "type": "metric",
             "properties": {
                 "metrics": [
-                    [ "sap-monitor", "ACT_DIA", "by SID", "HDB_sidapp00_HDB_00" ],
-                    [ "...", "HDB_sidpas00_HDB_01" ]
+                    [ { "expression": "SEARCH('{\"sap-monitor\",\"by SID\"} HDB AND MetricName=ACT_DIA', 'Average', 60)", "label": "#", "id": "e1", "region": "eu-central-1" } ]
                 ],
                 "view": "timeSeries",
                 "stacked": false,
                 "region": "eu-central-1",
                 "stat": "Average",
-                "period": 30,
+                "period": 60,
                 "annotations": {
                     "horizontal": [
                         {
@@ -81,24 +82,25 @@
                         "showUnits": false
                     }
                 },
-                "title": "Active Dialog Work Processes (sm66)"
+                "title": "Active Dialog Work Processes (sm66)",
+                "liveData": true
             }
         },
         {
-            "type": "metric",
-            "x": 12,
-            "y": 6,
-            "width": 12,
             "height": 6,
+            "width": 12,
+            "y": 6,
+            "x": 12,
+            "type": "metric",
             "properties": {
                 "metrics": [
-                    [ "AWS/EC2", "CPUUtilization", "InstanceId", "i-07077d1f8e1f2888f" ],
-                    [ "...", "i-0fe4126c96400a17e" ]
+                    [ "AWS/EC2", "CPUUtilization", "InstanceId", "i-07077d1f8e1f2888f", { "label": "AAS (sidapp00)", "id": "m1" } ],
+                    [ "...", "i-0fe4126c96400a17e", { "label": "PAS (sidpas00)", "id": "m2" } ]
                 ],
                 "view": "timeSeries",
                 "stacked": false,
                 "region": "eu-central-1",
-                "period": 30,
+                "period": 60,
                 "stat": "Average",
                 "yAxis": {
                     "left": {
@@ -109,19 +111,19 @@
                 "title": "CPU Utilization (CloudWatch)",
                 "legend": {
                     "position": "right"
-                }
+                },
+                "liveData": true
             }
         },
         {
-            "type": "metric",
-            "x": 12,
-            "y": 0,
-            "width": 12,
             "height": 6,
+            "width": 6,
+            "y": 0,
+            "x": 18,
+            "type": "metric",
             "properties": {
                 "metrics": [
-                    [ "sap-monitor", "USERS", "by SID", "HDB_sidapp00_HDB_00" ],
-                    [ "...", "HDB_sidpas00_HDB_01" ]
+                    [ { "expression": "SEARCH('{\"sap-monitor\",\"by SID\"} HDB AND MetricName=USERS', 'Average', 60)", "label": "#", "id": "e1", "region": "eu-central-1" } ]
                 ],
                 "view": "timeSeries",
                 "stacked": false,
@@ -131,22 +133,27 @@
                 "yAxis": {
                     "left": {
                         "min": 0,
+                        "showUnits": false,
+                        "label": ""
+                    },
+                    "right": {
                         "showUnits": false
                     }
                 },
-                "title": "Active Users (sm04)"
+                "title": "Active Users (sm04)",
+                "setPeriodToTimeRange": true,
+                "liveData": true
             }
         },
         {
-            "type": "metric",
-            "x": 12,
-            "y": 18,
-            "width": 12,
             "height": 6,
+            "width": 12,
+            "y": 18,
+            "x": 12,
+            "type": "metric",
             "properties": {
                 "metrics": [
-                    [ "sap-monitor", "FREE_MEM_PERC", "by SID", "HDB_sidapp00_HDB_00" ],
-                    [ "...", "HDB_sidpas00_HDB_01" ]
+                    [ { "expression": "SEARCH('{\"sap-monitor\",\"by SID\"} HDB AND MetricName=FREE_MEM_PERC', 'Average', 60)", "label": "#", "id": "e1", "region": "eu-central-1" } ]
                 ],
                 "view": "timeSeries",
                 "stacked": false,
@@ -161,15 +168,16 @@
                         "showUnits": false,
                         "label": "Percent"
                     }
-                }
+                },
+                "liveData": true
             }
         },
         {
-            "type": "metric",
-            "x": 0,
-            "y": 12,
-            "width": 12,
             "height": 6,
+            "width": 6,
+            "y": 12,
+            "x": 0,
+            "type": "metric",
             "properties": {
                 "metrics": [
                     [ "sap-monitor", "ST03_DIA_AVG_SNAP", "by SID", "HDB", { "label": "Avg. Dialog Response Time per Step" } ],
@@ -186,21 +194,22 @@
                         "showUnits": false,
                         "label": "Milliseconds"
                     }
-                }
+                },
+                "liveData": true
             }
         },
         {
+            "height": 6,
+            "width": 9,
+            "y": 12,
+            "x": 15,
             "type": "metric",
-            "x": 12,
-            "y": 15,
-            "width": 12,
-            "height": 3,
             "properties": {
                 "metrics": [
                     [ "sap-monitor", "ST03_RFC_DB_TIME_PERC_SNAP", "by SID", "HDB", { "label": "DB Time %" } ],
                     [ ".", "ST03_RFC_CPU_TIME_PERC_SNAP", ".", ".", { "label": "CPU Time %" } ]
                 ],
-                "view": "singleValue",
+                "view": "pie",
                 "stacked": true,
                 "region": "eu-central-1",
                 "period": 300,
@@ -219,15 +228,20 @@
                             "value": 40
                         }
                     ]
-                }
+                },
+                "setPeriodToTimeRange": true,
+                "labels": {
+                    "visible": true
+                },
+                "liveData": true
             }
         },
         {
-            "type": "metric",
-            "x": 12,
+            "height": 6,
+            "width": 9,
             "y": 12,
-            "width": 12,
-            "height": 3,
+            "x": 6,
+            "type": "metric",
             "properties": {
                 "metrics": [
                     [ "sap-monitor", "ST03_RFC_AVG_DB_SEQ_AVG_SNAP", "by SID", "HDB", { "label": "Sequential reads (ms)" } ],
@@ -238,38 +252,79 @@
                 "region": "eu-central-1",
                 "title": "Average Database Times RFC (st03)",
                 "period": 300,
-                "stat": "Average"
+                "stat": "Average",
+                "liveData": true
             }
         },
         {
-            "type": "metric",
-            "x": 3,
-            "y": 0,
-            "width": 9,
             "height": 6,
+            "width": 9,
+            "y": 0,
+            "x": 3,
+            "type": "metric",
             "properties": {
                 "metrics": [
                     [ "AWS/Lambda", "Errors", "FunctionName", "sap-monitor-HDB", "Resource", "sap-monitor-HDB", { "id": "errors", "stat": "Sum", "color": "#d13212", "visible": false } ],
                     [ ".", "Invocations", ".", ".", ".", ".", { "id": "invocations", "stat": "Sum", "visible": false } ],
                     [ { "expression": "100 - 100 * errors / MAX([errors, invocations])", "label": "Success rate (%)", "id": "availability", "yAxis": "right", "region": "eu-central-1" } ],
-                    [ "AWS/Lambda", "Duration", "FunctionName", "sap-monitor-HDB", { "id": "m1", "color": "#e377c2" } ]
+                    [ "AWS/Lambda", "Duration", "FunctionName", "sap-monitor-HDB", { "id": "m1", "color": "#e377c2", "label": "Monitor Response Time" } ],
+                    [ "sap-monitor", "PING", "by SID", "HDB", { "id": "m2", "color": "#9467bd", "label": "RFC Response Time" } ]
                 ],
                 "region": "eu-central-1",
                 "title": "MONITOR Status",
                 "yAxis": {
                     "right": {
                         "max": 100,
-                        "min": 0
+                        "min": 0,
+                        "label": "Percent",
+                        "showUnits": false
                     },
                     "left": {
                         "min": 0,
-                        "showUnits": false
+                        "showUnits": false,
+                        "label": "Milliseconds"
                     }
                 },
                 "view": "timeSeries",
                 "stacked": false,
                 "period": 60,
                 "stat": "Average",
+                "liveData": true
+            }
+        },
+        {
+            "height": 6,
+            "width": 6,
+            "y": 0,
+            "x": 12,
+            "type": "metric",
+            "properties": {
+                "metrics": [
+                    [ "sap-monitor", "TOTAL_APP_SERVERS", "by SID", "HDB" ]
+                ],
+                "view": "timeSeries",
+                "stacked": false,
+                "region": "eu-central-1",
+                "stat": "Average",
+                "period": 60,
+                "yAxis": {
+                    "left": {
+                        "max": 6,
+                        "min": 0,
+                        "showUnits": false
+                    }
+                },
+                "annotations": {
+                    "horizontal": [
+                        {
+                            "color": "#98df8a",
+                            "label": "Base Capacity",
+                            "value": 2,
+                            "fill": "below"
+                        }
+                    ]
+                },
+                "title": "# App Servers",
                 "liveData": true
             }
         }

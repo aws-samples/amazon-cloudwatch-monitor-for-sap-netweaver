@@ -1,18 +1,21 @@
-DATE                                              20200423                                          153553
+DATE                                              20210402                                          193717
 RELEASE                                           753
 LOADED_AGRS                                       ZSAPMONITOR
-AGR_DEFINE                                        000ZSAPMONITOR                                                 DEVELOPER   20200408085327000000000000000DEVELOPER   20200423153520000000000000000
+AGR_DEFINE                                        000ZSAPMONITOR                                                 DEVELOPER   20200408085327000000000000000DEVELOPER   20210401195207000000000000000
 AGR_TCODES                                        000ZSAPMONITOR                   TR/SDF/SMON                                        X 00000
 AGR_TCODES                                        000ZSAPMONITOR                   TRSM50                                             X 00000
+AGR_TCODES                                        000ZSAPMONITOR                   TRSM51                                             X 00000
 AGR_TCODES                                        000ZSAPMONITOR                   TRST03                                             X 00000
 AGR_1250                                          000ZSAPMONITOR                   000001S_ADMI_FCDT-HB53000100    M  O000000
-AGR_1250                                          000ZSAPMONITOR                   000002S_APPL_LOGT-HB53000100    SX O000000
-AGR_1250                                          000ZSAPMONITOR                   000003S_BTCH_ADMT-HB53000100    U  O000000
-AGR_1250                                          000ZSAPMONITOR                   000004S_DATASET T-HB53000100    SX O000000
-AGR_1250                                          000ZSAPMONITOR                   000005S_RFC     T-HB53000100    U  O000000
-AGR_1250                                          000ZSAPMONITOR                   000006S_TCODE   T-HB53000100    S  O000000
-AGR_1250                                          000ZSAPMONITOR                   000007S_TOOLS_EXT-HB53000100    G  O000000
-AGR_1250                                          000ZSAPMONITOR                   000008S_USER_GRPT-HB53000100    U  O000000
+AGR_1250                                          000ZSAPMONITOR                   000002S_ADMI_FCDT-HB53000101    S  O000000
+AGR_1250                                          000ZSAPMONITOR                   000003S_APPL_LOGT-HB53000100    SX O000000
+AGR_1250                                          000ZSAPMONITOR                   000004S_BTCH_ADMT-HB53000100    U  O000000
+AGR_1250                                          000ZSAPMONITOR                   000005S_C_FUNCT T-HB53000100    S  O000000
+AGR_1250                                          000ZSAPMONITOR                   000006S_DATASET T-HB53000100    SX O000000
+AGR_1250                                          000ZSAPMONITOR                   000007S_RFC     T-HB53000100    U  O000000
+AGR_1250                                          000ZSAPMONITOR                   000008S_TCODE   T-HB53000100    S  O000000
+AGR_1250                                          000ZSAPMONITOR                   000009S_TOOLS_EXT-HB53000100    G  O000000
+AGR_1250                                          000ZSAPMONITOR                   000010S_USER_GRPT-HB53000100    U  O000000
 AGR_1251                                          000ZSAPMONITOR                   000001S_ADMI_FCDT-HB53000100    S_ADMI_FCDPADM                                                                            M  O000000
 AGR_1251                                          000ZSAPMONITOR                   000002S_RFC     T-HB53000100    RFC_TYPE  FUNC                                                                            U  O000000
 AGR_1251                                          000ZSAPMONITOR                   000003S_RFC     T-HB53000100    RFC_NAME  SWNC_GET_WORKLOAD_SNAPSHOT                                                      U  O000000
@@ -43,15 +46,24 @@ AGR_1251                                          000ZSAPMONITOR                
 AGR_1251                                          000ZSAPMONITOR                   000028S_BTCH_ADMT-HB53000100    BTCADMIN  Y                                                                               U  O000000
 AGR_1251                                          000ZSAPMONITOR                   000029S_RFC     T-HB53000100    RFC_NAME  BDL_GET_CENTRAL_TIMESTAMP                                                       U  O000000
 AGR_1251                                          000ZSAPMONITOR                   000030S_RFC     T-HB53000100    RFC_NAME  RFC_METADATA_GET                                                                U  O000000
+AGR_1251                                          000ZSAPMONITOR                   000031S_RFC     T-HB53000100    RFC_NAME  TH_SERVER_LIST                                                                  U  O000000
+AGR_1251                                          000ZSAPMONITOR                   000032S_RFC     T-HB53000100    RFC_NAME  /SDF/SMON_REORG                                                                 U  O000000
+AGR_1251                                          000ZSAPMONITOR                   000033S_ADMI_FCDT-HB53000101    S_ADMI_FCDPADM                                                                            S  O000000
+AGR_1251                                          000ZSAPMONITOR                   000034S_ADMI_FCDT-HB53000101    S_ADMI_FCDST0R                                                                            S  O000000
+AGR_1251                                          000ZSAPMONITOR                   000035S_TCODE   T-HB53000100    TCD       SM51                                                                            S  O000000
+AGR_1251                                          000ZSAPMONITOR                   000036S_C_FUNCT T-HB53000100    ACTVT     16                                                                              S  O000000
+AGR_1251                                          000ZSAPMONITOR                   000037S_C_FUNCT T-HB53000100    CFUNCNAME SYSTEM                                                                          S  O000000
+AGR_1251                                          000ZSAPMONITOR                   000038S_C_FUNCT T-HB53000100    PROGRAM   SAPLTHFB                                                                        S  O000000
 AGR_TEXTS                                         000ZSAPMONITOR                   E00000SAP Monitoring via Amazon CloudWatch
 AGR_FLAGS                                         000ZSAPMONITOR                   COLL_AGR  DEVELOPER   20200408085327DEVELOPER   20200408085327
 AGR_FLAGS                                         000ZSAPMONITOR                   DEVCLASS  DEVELOPER   20200408085327DEVELOPER   20200408085327
 AGR_FLAGS                                         000ZSAPMONITOR                   MASTER_LANDEVELOPER   20200408085327DEVELOPER   20200408085327E
 AGR_FLAGS                                         000ZSAPMONITOR                   RESP_USER DEVELOPER   20200408085327DEVELOPER   20200408085327
-AGR_FLAGS                                         000ZSAPMONITOR                   FORCE_MIX DEVELOPER   20200408085718DEVELOPER   20200423153518
-AGR_HIER                                          000ZSAPMONITOR                   0000000200000001 00000010TR/SDF/SMON                                       01                                X                                         0000000000
-AGR_HIER                                          000ZSAPMONITOR                   0000000300000001 00000020TRST03                                            01                                X                                         0000000000
-AGR_HIER                                          000ZSAPMONITOR                   0000000400000001 00000030TRSM50                                            01                                X                                         0000000000
+AGR_FLAGS                                         000ZSAPMONITOR                   FORCE_MIX DEVELOPER   20200408085718DEVELOPER   20210401195205
+AGR_HIER                                          000ZSAPMONITOR                   0000000200000001 00000020TR/SDF/SMON                                       01                                X                                         0000000000
+AGR_HIER                                          000ZSAPMONITOR                   0000000300000001 00000030TRST03                                            01                                X                                         0000000000
+AGR_HIER                                          000ZSAPMONITOR                   0000000400000001 00000040TRSM50                                            01                                X                                         0000000000
+AGR_HIER                                          000ZSAPMONITOR                   0000000500000001 00000010TRSM51                                            01                                X                                         0000000000
 AGR_HIERT                                         000ZSAPMONITOR                   D00000002Snapshot-Monitor
 AGR_HIERT                                         000ZSAPMONITOR                   E00000002Snapshot Monitor
 AGR_HIERT                                         000ZSAPMONITOR                   D00000003Systemlast u. Perform. Statistik
@@ -61,6 +73,11 @@ AGR_HIERT                                         000ZSAPMONITOR                
 AGR_HIERT                                         000ZSAPMONITOR                   F00000004Synthèse des processus
 AGR_HIERT                                         000ZSAPMONITOR                   I00000004Riepilogo processo di lavoro
 AGR_HIERT                                         000ZSAPMONITOR                   N00000004Work-process-overzicht
-AGR_TIME                                          000ZSAPMONITOR                   MENU      DEVELOPER   20200408085435000000000000000DEVELOPER   20200408093202000000000000000
-AGR_TIME                                          000ZSAPMONITOR                   PROFILE   DEVELOPER   20200408085718000000000000000DEVELOPER   20200423153518000000000000000
+AGR_HIERT                                         000ZSAPMONITOR                   D00000005Gestartete AS-Instanzen
+AGR_HIERT                                         000ZSAPMONITOR                   E00000005Started AS Instances
+AGR_HIERT                                         000ZSAPMONITOR                   I00000005Lista dei server SAP
+AGR_HIERT                                         000ZSAPMONITOR                   N00000005
+AGR_HIERT                                         000ZSAPMONITOR                   S00000005Servidores SAP
+AGR_TIME                                          000ZSAPMONITOR                   MENU      DEVELOPER   20200408085435000000000000000DEVELOPER   20210401195146000000000000000
+AGR_TIME                                          000ZSAPMONITOR                   PROFILE   DEVELOPER   20200408085718000000000000000DEVELOPER   20210401195205000000000000000
 AGR_LSD                                           000ZSAPMONITOR                                                 E

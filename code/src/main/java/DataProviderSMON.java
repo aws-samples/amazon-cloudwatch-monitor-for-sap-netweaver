@@ -33,6 +33,10 @@ public class DataProviderSMON {
     JCoFunction function_get;
     JCoFunction function_read;
     JCoFunction function_start;
+    JCoFunction function_delete;
+    JCoFunction function_list;
+
+    Integer appServers = 0;
 
     //Check glossary.csv for allowed values
     String[] whitelisted = new String[]
@@ -91,6 +95,96 @@ public class DataProviderSMON {
     public void reportPing(final String destinationString, final long elapsedTime)
     {
         utils.collectResultEmbedded(config.destination_name, "PING", Double.parseDouble(Long.toString(elapsedTime)));
+    }
+
+    //TH_SERVER_LIST
+    public void getAppServers() throws JCoException
+    {
+        System.out.println("Executing RFC 'TH_SERVER_LIST'...");
+
+        final JCoDestination destination = JCoDestinationManager.getDestination(config.destination_name);
+
+        /*if (function_list == null) { DO NO CACHE DUE TO BUG DUPLICATES */
+            function_list = destination.getRepository().getFunction("TH_SERVER_LIST");
+        /*} else {
+            System.out.println("Use function definition from cache...");
+        }*/
+
+        if (function_list == null) {
+            throw new RuntimeException("RFC 'TH_SERVER_LIST' not found! Check the SAP user authorization and required SAP release (ST-PI >= SP08)!");
+        }
+
+        try {
+            function_list.execute(destination);
+        } catch (final AbapException e) {
+            System.out.println(e.toString());
+            throw new RuntimeException("Connection lost: " + e.toString());
+        }
+
+        if(config.debug)
+            System.out.println(function_list.getTableParameterList().toXML());
+
+        JCoTable result = function_list.getTableParameterList().getTable("LIST");
+
+        Integer monresult = result.getNumRows();
+
+        System.out.println("TH_SERVER_LIST Result Set: " + monresult);
+        System.out.println();
+
+        Integer tmpAppServers = 0;
+        for (int i = 0; i < monresult; i++) {
+
+            result.setRow(i);
+
+            /*String NAME = result.getString("NAME");*/
+            String STATE = result.getString("STATE");
+
+            //01 = Active
+            if (STATE.equals("01")) {
+                tmpAppServers++;
+            }
+
+        }
+
+        if(appServers > 0 && tmpAppServers > 0 && appServers != tmpAppServers)
+        {
+            System.out.println("Number of App Servers changed - restart /SDF/SMON collector!");
+            DeleteSMONJob();
+            startSMONJob();
+        }
+
+        appServers = tmpAppServers;
+        utils.collectResultEmbedded(config.destination_name, "TOTAL_APP_SERVERS",(double) appServers);
+        utils.submitResultsEmbedded("TOTAL_APP_SERVERS");
+    }
+
+    //SDF/SMON_REORG
+    public void DeleteSMONJob() throws JCoException
+    {
+        System.out.println("Executing RFC '/SDF/SMON_REORG'...");
+
+        final JCoDestination destination = JCoDestinationManager.getDestination(config.destination_name);
+
+        if (function_delete == null) {
+            function_delete = destination.getRepository().getFunction("/SDF/SMON_REORG");
+        } else {
+            System.out.println("Use function definition from cache...");
+        }
+
+        if (function_delete == null) {
+            throw new RuntimeException("RFC '/SDF/SMON_REORG' not found! Check the SAP user authorization and required SAP release (ST-PI >= SP08)!");
+        }
+
+        //START IMPORT PARAMETERS
+        function_delete.getImportParameterList().setValue("GUID", config.guid);
+        //END IMPORT PARAMETERS
+
+        try {
+            function_delete.execute(destination);
+        } catch (final AbapException e) {
+            System.out.println(e.toString());
+            return;
+        }
     }
 
     //SDF/SMON_ANALYSIS_START
@@ -273,6 +367,7 @@ public class DataProviderSMON {
             System.out.println("/SDF/SMON guid: " + config.guid + " job: " + config.sdfmon_name);
             System.out.println();
             getSMONJobData();
+            getAppServers();
         } else {
 
             if (config.sdfmon_schedule) {   
