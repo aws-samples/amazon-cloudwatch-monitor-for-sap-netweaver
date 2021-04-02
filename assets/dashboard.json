@@ -48,7 +48,7 @@
                 },
                 "title": "CPU Utilization (st06)",
                 "legend": {
-                    "position": "right"
+                    "position": "bottom"
                 },
                 "liveData": true
             }
@@ -110,7 +110,7 @@
                 },
                 "title": "CPU Utilization (CloudWatch)",
                 "legend": {
-                    "position": "right"
+                    "position": "bottom"
                 },
                 "liveData": true
             }
@@ -271,7 +271,7 @@
                     [ "sap-monitor", "PING", "by SID", "HDB", { "id": "m2", "color": "#9467bd", "label": "RFC Response Time" } ]
                 ],
                 "region": "eu-central-1",
-                "title": "MONITOR Status",
+                "title": "Monitor Status and Performance",
                 "yAxis": {
                     "right": {
                         "max": 100,
@@ -324,7 +324,7 @@
                         }
                     ]
                 },
-                "title": "# App Servers",
+                "title": "# App Servers (sm51)",
                 "liveData": true
             }
         }
