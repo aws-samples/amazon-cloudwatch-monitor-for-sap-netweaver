@@ -11,7 +11,7 @@ Metadata:
     Author: mtoerpe
     SpdxLicenseId: Apache-2.0
     LicenseUrl: s3://sap-monitor/34400b68072d710fecd0a2940a0d1658
-    ReadmeUrl: s3://sap-monitor/e835643790b297a4a164ebcc64e4445a
+    ReadmeUrl: s3://sap-monitor/cb03873fab47b4d2e631b2ecfdd66ff3
     Labels:
     - sap
     - netweaver
@@ -157,7 +157,7 @@ Resources:
   CWLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://sap-monitor/7a1c12b1ed1d89e00beaa39a202030dc
+      CodeUri: s3://sap-monitor/c716c19711241c175058825388cbeae2
       Layers:
       - Fn::Sub:
         - arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:sapjco:${LLY}

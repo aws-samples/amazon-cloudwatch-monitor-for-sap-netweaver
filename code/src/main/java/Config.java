@@ -50,7 +50,7 @@ public final class Config {
 
     public Boolean connected = false;
     public Boolean reset = false;
-    public Boolean debug = true;
+    public Boolean debug = false;
 
     public PropertiesDestinationDataProvider pddp_old;
 
