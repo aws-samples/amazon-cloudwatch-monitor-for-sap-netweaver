@@ -1,10 +1,7 @@
 # Ideas
 
 - Add further metrics
-  - Number of Dumps (st22)
-  - Number of critical syslog issues (sm21)
-  - Number of failed/pending IDOCs (we02)
-  - Number of aborted/failed jobs (se37)
+  - Number of critical syslog issues (sm21) (/SDF/GET_SYS_LOG)
   - Odata Statistics
   - Business Metrics e.g. Open Sales Orders
   - st03 other tasktypes

@@ -10,7 +10,7 @@ To force a config reload, simply pass the string "refresh":
 
 ![Imgur](../assets/tr2.png)
 
-For debugging purposes, temporarily add an environment variable - Key: DEBUG Value: true
+For debugging additionally pass the string "debug" within the test event.
 
 Make sure to also check your connectiviy, as per prerequisites:
 

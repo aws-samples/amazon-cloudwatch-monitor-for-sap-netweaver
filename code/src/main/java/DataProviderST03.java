@@ -22,97 +22,51 @@ import com.sap.conn.jco.JCoTable;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import com.sap.conn.jco.JCoParameterList;
+import java.util.HashMap;
 
 public class DataProviderST03 {
-
-    JCoFunction function_read_swnc;
 
     private static DecimalFormat df = new DecimalFormat("0.00");
 
     public int frequency = 5; //execute only every 5th iteration/function call
+    public String prefix = "ST03";
+    public String rfc = "SWNC_GET_WORKLOAD_SNAPSHOT";
+    
+    public Config config = Config.getInstance();
+    public Utils utils = new Utils();
 
     public void getData() throws JCoException
     {
-        System.out.println("...DataProviderST03...");
-        
-        Config config = Config.getInstance();
+        //IMPORT
+        final java.util.Date date = config.system_date;
+        final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        final Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        String end_time = sdf.format(cal.getTime());
+        cal.add(Calendar.MINUTE, -frequency); //Run only every 5th minute => Time Offset 5 min
+        String start_time = sdf.format(cal.getTime());
 
-        if (config.iteration % frequency == 0 || config.iteration == 1) { //execute only every 5th iteration/function call
+        //MAKE SURE START TIME < END TIME
+        if (Utils.startAfterEndTime(start_time,end_time)) {
+            start_time = "00:00:01";
+            System.out.println("Time adjusted!");
+        }
 
-            String destinationString = config.destination_name;
+        HashMap<String, Object> importParameters = new HashMap<String, Object>();
+        importParameters.put("READ_START_DATE", date);
+        importParameters.put("READ_END_DATE", date);
+        importParameters.put("READ_START_TIME", start_time);
+        importParameters.put("READ_END_TIME", end_time);
 
-            System.out.println("Executing RFC 'SWNC_GET_WORKLOAD_SNAPSHOT'...");
-
-            final JCoDestination destination = JCoDestinationManager.getDestination(destinationString);
-
-            if (function_read_swnc == null) { 
-                function_read_swnc = destination.getRepository().getFunction("SWNC_GET_WORKLOAD_SNAPSHOT");
-            } else {
-                System.out.println("Use function definition from cache...");
-            }
-
-            if (function_read_swnc == null) {
-                throw new RuntimeException("RFC 'SWNC_GET_WORKLOAD_SNAPSHOT' not found! Check the SAP user authorization and required SAP release!");
-            }
-
-            //START IMPORT PARAMETERS
-            final java.util.Date date = config.system_date;
-            final SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-            final Calendar cal = Calendar.getInstance();
-            cal.setTime(date);
-            String end_time = sdf.format(cal.getTime());
-            cal.add(Calendar.MINUTE, -frequency); //Run only every 5th minute => Time Offset 5 min
-            String start_time = sdf.format(cal.getTime());
-
-            //MAKE SURE START TIME < END TIME
-            if (Utils.startAfterEndTime(start_time,end_time)) {
-                start_time = "00:00:01";
-                System.out.println("Time adjusted!");
-            }
-
-            SimpleDateFormat de_formatter = new SimpleDateFormat("dd.MM.YYYY");
-            System.out.println("-> READ_START_DATE: " + de_formatter.format(date));
-            System.out.println("-> READ_END_DATE: " + de_formatter.format(date));
-            System.out.println("-> READ_START_TIME: " + start_time);
-            System.out.println("-> READ_END_TIME: " + end_time);
-
-            function_read_swnc.getImportParameterList().setValue("READ_START_DATE", date);
-            function_read_swnc.getImportParameterList().setValue("READ_END_DATE", date);
-            function_read_swnc.getImportParameterList().setValue("READ_START_TIME", start_time);
-            function_read_swnc.getImportParameterList().setValue("READ_END_TIME", end_time);
-            //END IMPORT PARAMETERS
-
-            final long startTime = System.currentTimeMillis();
-            try {
-                function_read_swnc.execute(destination);
-            } catch (final AbapException e) {
-                System.out.println(e.toString());
-                throw new RuntimeException("Connection lost: " + e.toString());
-            }
-
-            final long stopTime = System.currentTimeMillis();
-            final long elapsedTime = stopTime - startTime;
-            System.out.println("PING: " + elapsedTime + " ms");
-
-            System.out.println("RFC 'SWNC_GET_WORKLOAD_SNAPSHOT' finished!");
-
-            if(config.debug)
-            System.out.println(function_read_swnc.getExportParameterList().toXML());
-
-            final JCoTable result = function_read_swnc.getExportParameterList().getTable("TASKTIMES");
-
-            final Integer monresult = result.getNumRows();
-
-            System.out.println("SWNC_GET_WORKLOAD_SNAPSHOT Result Set: " + monresult);
-            System.out.println();
-
-            if(config.debug)
-            System.out.println(result.toXML());
-
-            Utils utils = new Utils();
-
-            for (int i = 0; i < monresult; i++) {
-
+        //EXECUTE
+        JCoParameterList exportParameters = utils.execute("PARAMS", importParameters, rfc, prefix, frequency);
+          
+        //EXPORT
+        if(exportParameters != null)
+        {
+            final JCoTable result = exportParameters.getTable("TASKTIMES");
+            for (int i = 0; i < result.getNumRows(); i++) {
                 result.setRow(i);
 
                 String TASKTYPE = result.getString("TASKTYPE");
@@ -176,26 +130,20 @@ public class DataProviderST03 {
                         AVG_DB_TIME_CHG = Double.parseDouble(df.format(TOTAL_DB_TIME_READ_CHG / NUMBER_DB_TIME_READ_CHG));
                     }
 
-                    utils.collectResultEmbedded(destinationString, "ST03_" + TASKTYPE_LABEL + "_AVG_SNAP",(double) AVG_RESPONSE_TIME);
-                    utils.collectResultEmbedded(destinationString, "ST03_" + TASKTYPE_LABEL + "_CPU_TIME_PERC_SNAP",(double) TOTAL_CPU_TIME_PC);
-                    utils.collectResultEmbedded(destinationString, "ST03_" + TASKTYPE_LABEL + "_DB_TIME_PERC_SNAP",(double) TOTAL_DB_TIME_PC);
-                    //utils.collectResultEmbedded(destinationString, "ST03_" + TASKTYPE_LABEL + "_R_TIME_PERC_SNAP",(double) TOTAL_REST_PC);
-                    utils.collectResultEmbedded(destinationString, "ST03_" + TASKTYPE_LABEL + "_AVG_DB_DIR_SNAP",(double) AVG_DB_TIME_DIR);
-                    utils.collectResultEmbedded(destinationString, "ST03_" + TASKTYPE_LABEL + "_AVG_DB_SEQ_AVG_SNAP",(double) AVG_DB_TIME_SEQ);
-                    utils.collectResultEmbedded(destinationString, "ST03_" + TASKTYPE_LABEL + "_AVG_DB_CHG_AVG_SNAP",(double) AVG_DB_TIME_CHG);
-                    //utils.collectResultEmbedded(destinationString, "ST03_" + TASKTYPE_LABEL + "_AVGDB_SNAP", (double) AVG_DB_TIME);
+                    utils.collectResultEmbedded(config.destination_name, "ST03_" + TASKTYPE_LABEL + "_AVG_SNAP",(double) AVG_RESPONSE_TIME);
+                    utils.collectResultEmbedded(config.destination_name, "ST03_" + TASKTYPE_LABEL + "_CPU_TIME_PERC_SNAP",(double) TOTAL_CPU_TIME_PC);
+                    utils.collectResultEmbedded(config.destination_name, "ST03_" + TASKTYPE_LABEL + "_DB_TIME_PERC_SNAP",(double) TOTAL_DB_TIME_PC);
+                    //utils.collectResultEmbedded(config.destination_name, "ST03_" + TASKTYPE_LABEL + "_R_TIME_PERC_SNAP",(double) TOTAL_REST_PC);
+                    utils.collectResultEmbedded(config.destination_name, "ST03_" + TASKTYPE_LABEL + "_AVG_DB_DIR_SNAP",(double) AVG_DB_TIME_DIR);
+                    utils.collectResultEmbedded(config.destination_name, "ST03_" + TASKTYPE_LABEL + "_AVG_DB_SEQ_AVG_SNAP",(double) AVG_DB_TIME_SEQ);
+                    utils.collectResultEmbedded(config.destination_name, "ST03_" + TASKTYPE_LABEL + "_AVG_DB_CHG_AVG_SNAP",(double) AVG_DB_TIME_CHG);
+                    //utils.collectResultEmbedded(config.destination_name, "ST03_" + TASKTYPE_LABEL + "_AVGDB_SNAP", (double) AVG_DB_TIME);
                 }
             }
-
-            if (monresult == 0) {
-                throw new RuntimeException("No measurements found! Check if stad/st03 collectors are running and timezones match!");
-            } else {
-                utils.submitResultsEmbedded("ST03");
-            }
-        }
-        else
-        {
-            System.out.println("Skipping - Run only every " + frequency + " th iteration!");
+            
+            //SUBMIT
+            if(result.getNumRows() > 0)
+            utils.submitResultsEmbedded(prefix);
         }
     }
 }

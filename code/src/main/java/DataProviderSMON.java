@@ -208,7 +208,7 @@ public class DataProviderSMON {
         String start_time = formatter.format(config.system_date);
         String end_time = "23:59:59";
 
-        SimpleDateFormat de_formatter = new SimpleDateFormat("dd.MM.YYYY");
+        SimpleDateFormat de_formatter = new SimpleDateFormat("dd.MM.yyyy");
         System.out.println("-> DATUM: " + de_formatter.format(config.system_date));
         System.out.println("-> ST_DAT: " + de_formatter.format(config.system_date));
         System.out.println("-> ENDDAT: " + de_formatter.format(config.system_date));
@@ -305,7 +305,7 @@ public class DataProviderSMON {
                 throw new RuntimeException("RFC '/SDF/SMON_GET_SMON_RUNS' not found! Check the SAP user authorization and required SAP release (ST-PI >= SP08)!");
             }
 
-            SimpleDateFormat de_formatter = new SimpleDateFormat("dd.MM.YYYY");
+            SimpleDateFormat de_formatter = new SimpleDateFormat("dd.MM.yyyy");
             System.out.println("-> FROM_DATE: " + de_formatter.format(config.system_date));
             System.out.println("-> TO_DATE: " + de_formatter.format(config.system_date));
 
@@ -333,7 +333,7 @@ public class DataProviderSMON {
                 result.setRow(i);
 
                 java.util.Date mytime = result.getTime("ENDTIM");
-                java.util.Date mydate = result.getTime("ENDDAT");
+                java.util.Date mydate = result.getDate("ENDDAT");
 
                 //DEBUG
                 if (config.debug) {
@@ -416,7 +416,7 @@ public class DataProviderSMON {
             System.out.println("Time adjusted!");
         }
 
-        SimpleDateFormat de_formatter = new SimpleDateFormat("dd.MM.YYYY");
+        SimpleDateFormat de_formatter = new SimpleDateFormat("dd.MM.yyyy");
 
         System.out.println("-> GUID: " + config.guid);
         System.out.println("-> DATUM: " + de_formatter.format(config.system_date));

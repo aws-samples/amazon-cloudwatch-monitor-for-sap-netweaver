@@ -24,6 +24,9 @@ public class init {
     public static Connection connection;
     public static DataProviderSMON mysmon;
     public static DataProviderST03 myst03;
+    public static DataProviderST22 myst22;
+    public static DataProviderSM37 mysm37;
+    public static DataProviderWE02 mywe02;
 
     //LAUNCH VIA 'gradle run'
     public static void main(final String[] args) throws JCoException {
@@ -34,6 +37,9 @@ public class init {
     public static String handleRequest(final Object input, final Context context) throws JCoException {
 
         config = Config.getInstance();
+        
+        if(input.toString().contains("debug"))
+        config.debug = true;
 
         config.iteration++;
 
@@ -43,6 +49,7 @@ public class init {
 
             if (config.debug){
                 config.logger.log("Received Command: " + input + "\n");
+                config.logger.log("Debugging ON");
             }
 
             //REINITIALIZE
@@ -53,7 +60,7 @@ public class init {
                 config.connected = false;
                 config.reset = true;
                 config.iteration = 1;
-                config.logger.log("Reset config!\n");
+                config.logger.log("Config RESET");
             }
 
         }
@@ -80,6 +87,24 @@ public class init {
                 myst03 = new DataProviderST03();
             }
             myst03.getData();
+            
+            //ST22
+            if (myst22 == null) {
+                myst22 = new DataProviderST22();
+            }
+            myst22.getData();
+            
+            //SM37
+            if (mysm37 == null) {
+                mysm37 = new DataProviderSM37();
+            }
+            mysm37.getData();
+            
+            //WE02
+            if (mywe02 == null) {
+                mywe02 = new DataProviderWE02();
+            }
+            mywe02.getData();
         }
 
         return "Monitor operational - Pass '{ \"refresh\": \"true\" } ' to force a config reset! Received Command: " + input;

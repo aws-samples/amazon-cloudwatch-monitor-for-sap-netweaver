@@ -1,7 +1,7 @@
 {
     "widgets": [
         {
-            "height": 6,
+            "height": 3,
             "width": 3,
             "y": 0,
             "x": 0,
@@ -23,7 +23,7 @@
             }
         },
         {
-            "height": 6,
+            "height": 3,
             "width": 12,
             "y": 6,
             "x": 0,
@@ -56,7 +56,7 @@
         {
             "height": 6,
             "width": 12,
-            "y": 18,
+            "y": 15,
             "x": 0,
             "type": "metric",
             "properties": {
@@ -87,7 +87,7 @@
             }
         },
         {
-            "height": 6,
+            "height": 3,
             "width": 12,
             "y": 6,
             "x": 12,
@@ -126,7 +126,7 @@
                     [ { "expression": "SEARCH('{\"sap-monitor\",\"by SID\"} HDB AND MetricName=USERS', 'Average', 60)", "label": "#", "id": "e1", "region": "eu-central-1" } ]
                 ],
                 "view": "timeSeries",
-                "stacked": false,
+                "stacked": true,
                 "region": "eu-central-1",
                 "stat": "Average",
                 "period": 30,
@@ -148,7 +148,7 @@
         {
             "height": 6,
             "width": 12,
-            "y": 18,
+            "y": 15,
             "x": 12,
             "type": "metric",
             "properties": {
@@ -175,7 +175,7 @@
         {
             "height": 6,
             "width": 6,
-            "y": 12,
+            "y": 9,
             "x": 0,
             "type": "metric",
             "properties": {
@@ -192,7 +192,8 @@
                 "yAxis": {
                     "left": {
                         "showUnits": false,
-                        "label": "Milliseconds"
+                        "label": "Milliseconds",
+                        "min": 0
                     }
                 },
                 "liveData": true
@@ -201,7 +202,7 @@
         {
             "height": 6,
             "width": 9,
-            "y": 12,
+            "y": 9,
             "x": 15,
             "type": "metric",
             "properties": {
@@ -239,7 +240,7 @@
         {
             "height": 6,
             "width": 9,
-            "y": 12,
+            "y": 9,
             "x": 6,
             "type": "metric",
             "properties": {
@@ -257,10 +258,10 @@
             }
         },
         {
-            "height": 6,
-            "width": 9,
-            "y": 0,
-            "x": 3,
+            "height": 3,
+            "width": 6,
+            "y": 3,
+            "x": 6,
             "type": "metric",
             "properties": {
                 "metrics": [
@@ -326,6 +327,62 @@
                 },
                 "title": "# App Servers (sm51)",
                 "liveData": true
+            }
+        },
+        {
+            "height": 3,
+            "width": 3,
+            "y": 3,
+            "x": 0,
+            "type": "metric",
+            "properties": {
+                "metrics": [
+                    [ "sap-monitor", "ST22_DUMPS", "by SID", "HDB", { "label": "Today" } ]
+                ],
+                "view": "singleValue",
+                "region": "eu-central-1",
+                "period": 300,
+                "stacked": false,
+                "title": "DUMPS (st22)",
+                "stat": "Average"
+            }
+        },
+        {
+            "height": 3,
+            "width": 3,
+            "y": 3,
+            "x": 3,
+            "type": "metric",
+            "properties": {
+                "metrics": [
+                    [ "sap-monitor", "SM37_CANCELLED_JOBS", "by SID", "HDB", { "label": "Cancelled Today" } ]
+                ],
+                "view": "singleValue",
+                "region": "eu-central-1",
+                "title": "JOBS (sm37)",
+                "stat": "Average",
+                "period": 300
+            }
+        },
+        {
+            "height": 3,
+            "width": 9,
+            "y": 0,
+            "x": 3,
+            "type": "metric",
+            "properties": {
+                "metrics": [
+                    [ "sap-monitor", "WE02_INBOUND", "by SID", "HDB", { "label": "Failed Inbound" } ],
+                    [ ".", "WE02_OUTBOUND", ".", ".", { "label": "Failed Outbound" } ]
+                ],
+                "view": "singleValue",
+                "region": "eu-central-1",
+                "period": 300,
+                "stat": "Average",
+                "title": "IDoc Monitor (we02)",
+                "singleValueFullPrecision": false,
+                "setPeriodToTimeRange": true,
+                "stacked": false
             }
         }
     ]

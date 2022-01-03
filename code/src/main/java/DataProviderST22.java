@@ -22,7 +22,7 @@ import com.sap.conn.jco.JCoTable;
 import com.sap.conn.jco.JCoParameterList;
 import java.util.HashMap;
 
-public class DataProviderDummy {
+public class DataProviderST22 {
 
     public int frequency = 5; //execute only every iteration/function call
     public String prefix = "ST22";
@@ -33,7 +33,7 @@ public class DataProviderDummy {
 
     public void getData() throws JCoException
     {
-        //METRICS
+        //METRIC
         Integer DUMPS = 0;
         
         //IMPORT
@@ -52,8 +52,9 @@ public class DataProviderDummy {
                 DUMPS += result.getInt("DUMPS");
             }
             
-            //SUBMIT
-            Utils utils = new Utils();
+            System.out.println("Dumps: "+DUMPS);
+            
+            //COLLECT & SUBMIT
             utils.collectResultEmbedded(config.destination_name, prefix+"_DUMPS", (double) DUMPS);
             utils.submitResultsEmbedded(prefix);
         }

@@ -50,6 +50,7 @@ public class Connection {
                         System.out.println("Trying to connect...");
                         System.out.println();
                         final JCoDestination destination = JCoDestinationManager.getDestination(config.destination_name);
+                        config.destination = destination;
                         System.out.println("RFC connection attributes:");
                         System.out.println(destination.getAttributes());
                         System.out.println("Connection established!");

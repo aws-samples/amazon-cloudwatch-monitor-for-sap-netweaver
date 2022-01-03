@@ -20,27 +20,27 @@ sourceCompatibility = 11
 targetCompatibility = 11
 
 dependencies {
-    compile (
-        'com.amazonaws:aws-lambda-java-core:1.2.0',
-        'com.amazonaws:aws-lambda-java-events:2.2.6',
-        'com.amazonaws:aws-java-sdk-ssm:1.11.571',
-        'com.amazonaws:aws-java-sdk-cloudwatch:1.11.614',
-        'com.amazonaws:aws-java-sdk-secretsmanager:1.11.745',
-        'org.json:json:20180813'
+    implementation (
+        'com.amazonaws:aws-lambda-java-core:1.2.1',
+        'com.amazonaws:aws-lambda-java-events:3.11.0',
+        'com.amazonaws:aws-java-sdk-ssm:1.12.131',
+        'com.amazonaws:aws-java-sdk-cloudwatch:1.12.131',
+        'com.amazonaws:aws-java-sdk-secretsmanager:1.12.131',
+        'org.json:json:20211205'
     )
-    compile fileTree(dir: 'jars', include: '*')
+    implementation fileTree(dir: 'lib', include: '*')
 }
 
 task buildZip(type: Zip) {
     from compileJava
     from processResources              
     into('lib') {
-        from configurations.compileClasspath
+        from configurations.runtimeClasspath
     }           
 }
 
 run {
-    jvmArgs = ['-Djava.library.path=./jars/']
+    jvmArgs = ['-Djava.library.path=./lib/']
 }
 
 build.dependsOn buildZip

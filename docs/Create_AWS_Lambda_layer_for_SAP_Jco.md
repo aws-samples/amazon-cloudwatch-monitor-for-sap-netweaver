@@ -2,7 +2,7 @@
 
 **Note:** This activity has to be done **once** only, regardless of any subsequent deployments.
 
-Download the latest [SAP Java Connector](https://support.sap.com/en/product/connectors/jco.html) (e.g. version 3.1) to your local disk.
+Download the latest [SAP Java Connector](https://support.sap.com/en/product/connectors/jco.html) (**>= 3.1.5**) to your local disk.
 Make sure to select Linux for Intel, 64 bit!
 
 ![SAPDownload](../assets/ly0.png)

@@ -51,10 +51,14 @@ public final class Config {
     public Boolean connected = false;
     public Boolean reset = false;
     public Boolean debug = false;
+    
+    public Boolean we02 = false;
 
     public PropertiesDestinationDataProvider pddp_old;
 
     public LambdaLogger logger;
+    
+    public JCoDestination destination;
 
     JCoFunction function_config;
 
@@ -109,12 +113,6 @@ public final class Config {
 
     public void readSecrets()
     {
-        if(System.getenv("DEBUG") != null) {
-            debug = Boolean.parseBoolean(System.getenv("DEBUG"));
-
-            System.out.println("Debug Setting: "+debug.toString());
-        }
-
         if (System.getenv("SECRET") != null) {
             secret_key = System.getenv("SECRET");
         } else {
@@ -175,14 +173,19 @@ public final class Config {
                 }
 
                 username = obj.getString("user");
+                
                 sdfmon_name = obj.getString("/SDF/SMON_DESC");
+                
                 Integer sdfmon_schedule_tmp = obj.getInt("/SDF/SMON_SCHEDULE");
-
                 if (sdfmon_schedule_tmp == 0) {
                     sdfmon_schedule = false; 
                 } else {
                     sdfmon_schedule = true;
                 }
+                
+                Integer we02_tmp = obj.getInt("we02");
+                if (we02_tmp == 1)
+                we02 = true;
                 
                 final PropertiesDestinationDataProvider pddp = new PropertiesDestinationDataProvider(connectProperties);
 

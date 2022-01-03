@@ -9,6 +9,7 @@ You can also try and use our role export -> [ZSAPMONITOR.SAP](../assets/ZSAPMONI
   - st03
   - sm50
   - sm51
+  - st22
 - S_RFC
   - RFC_TYPE: Function Module
   - ACTVT: Execute (16)
@@ -16,19 +17,25 @@ You can also try and use our role export -> [ZSAPMONITOR.SAP](../assets/ZSAPMONI
     - /SDF/SMON_GET_SMON_RUNS 
     - /SDF/SMON_ANALYSIS_READ
     - /SDF/SMON_ANALYSIS_START
+    - /SDF/SMON_REORG
     - RFCPING
     - RFC_GET_FUNCTION_INTERFACE
     - DDIF_FIELDINFO_GET
     - SWNC_GET_WORKLOAD_SNAPSHOT
     - BDL_GET_CENTRAL_TIMESTAMP
     - RFC_METADATA_GET
-    - /SDF/SMON_REORG
     - TH_SERVER_LIST
+    - /SDF/EWA_GET_ABAP_DUMPS
+    - BAPI_XMI_LOGON
+    - BAPI_XBP_JOB_SELECT
+    - SYSTEM_RESET_RFC_SERVER
+    - ZE2E_IDOC (Optional)
 - S_ADMI_FCD
   - S_ADMI_FCD
     - PADM
     - ST0R
     - ST0M
+    - ST22
 - S_TOOLS_EX
   - AUTH
     - S_TOOLS_EX_A
@@ -39,6 +46,14 @@ You can also try and use our role export -> [ZSAPMONITOR.SAP](../assets/ZSAPMONI
   - BTCADMIN:
     - D
     - Y
+- S_C_FUNCT
+  - SAPLTHFB
+  - Execute
+  - SYSTEM
+- S_XMI_PROD
+  - AWS
+  - AWS
+  - XBP
 
 The result should look as follows:
 
