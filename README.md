@@ -19,7 +19,7 @@ Please see our blog post [SAP Monitoring: A serverless approach using Amazon Clo
   - Lambda: Additionally port **443** to call AWS Secrets Manager and CloudWatch APIs. In case of a private subnet without NAT Gateway make sure to create respective [private endpoints](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html)!
 - For Production systems, make sure to enable CloudWatch detailed monitoring according to [SAP note 1656250](https://launchpad.support.sap.com/#/notes/1656250).
 
-## Setting it up
+## Initial setup
 
 Please follow the [step-by-step guide](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/docs/Setting_it_up.md).
 
