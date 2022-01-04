@@ -23,6 +23,19 @@ Please see our blog post [SAP Monitoring: A serverless approach using Amazon Clo
 
 Please follow the [step-by-step guide](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/docs/Setting_it_up.md).
 
+## Update to latest version
+
+If you have deployed an older version of this solution already via **AWS Serverless Application Repository**, you can simply update the stack to the latest version as follows.
+
+- Launch an [AWS CloudShell](https://console.aws.amazon.com/cloudshell/home) instance
+- Execute the following statements - creates ChangeSet but keeps parameters **unchanged**:
+
+```bash
+wget https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/raw/master/update.sh
+chmod +x update.sh
+./update.sh
+```
+
 ## Architecture
 
 **Note:** You will have to deploy a single instance of this application per SAP System ID! 
