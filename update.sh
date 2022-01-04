@@ -11,7 +11,7 @@ read sappassword
 echo 'Prepare ChangeSet...'
 
 json=$(aws cloudformation describe-stacks --stack-name serverlessrepo-sap-monitor-$sapsid --query 'Stacks[*].Parameters')
-json=$(sed 's/****/'$sappassword'/g' <<< $json)
+json=$(sed 's/\*\*\*\*/'$sappassword'/g' <<< $json)
 json=$(sed 's/ParameterKey/Name/g' <<< $json)
 json=$(sed 's/ParameterValue/Value/g' <<< $json)
 json=$(sed 's/\[ \[/\[/g' <<< $json)
