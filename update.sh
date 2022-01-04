@@ -14,7 +14,7 @@ json=$(sed 's/\[ \[/\[/g' <<< $json)
 json=$(sed 's/\] \]/\]/g' <<< $json)
 changeARN=$(aws serverlessrepo create-cloud-formation-change-set \
 --application-id arn:aws:serverlessrepo:eu-central-1:529824580566:applications/sap-monitor \
---stack-name sap-monitor \
+--stack-name sap-monitor-$sapsid \
 --capabilities CAPABILITY_RESOURCE_POLICY CAPABILITY_IAM \
 --parameter-overrides "$json" \
 --query "ChangeSetId")
