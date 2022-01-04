@@ -2,7 +2,7 @@
 
 set -e
 
-releaseID='e2ed4fdef714c2ab1af2297d328cba7f' # v.1.061
+releaseID='6288ba869f82e9feb8561e1035035187' # v.1.062
 
 # Create Bucket if not exists
 accountid=$(aws sts get-caller-identity --query Account --output text)

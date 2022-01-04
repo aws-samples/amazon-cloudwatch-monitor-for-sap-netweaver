@@ -57,6 +57,11 @@ The resulting dashboards can look as follows
 
 ## Changelog
 
+1.062
+
+- Added Update.sh for simplified update to the latest version
+- Added Deploy.sh for deployment via AWS CloudFormation instead of AWS Serverless Application Repository
+
 1.06
 
 - Updated Dependencies including latest SAP JCo 3.1.5
