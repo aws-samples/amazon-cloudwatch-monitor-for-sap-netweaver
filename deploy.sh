@@ -23,5 +23,5 @@ sed -i 's/s3\:\/\/sap-monitor\/'$releaseID'/s3\:\/\/'$accountid'-sapmonitor\/'$r
 aws s3 cp packaged.yml s3://$accountid-sapmonitor/packaged.yml
 
 echo "All Done!"
-echo "Create a new AWS CloudFormation stack by selecting Amazon S3 as template source"
-echo "s3://$accountid-sapmonitor/packaged.yml"
+echo "Create a new AWS CloudFormation stack by selecting Amazon S3 as template source:"
+echo "https://$accountid-sapmonitor.s3.amazonaws.com/packaged.yml"
