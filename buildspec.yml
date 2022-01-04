@@ -8,7 +8,7 @@ phases:
   build:
     commands:
       - mkdir code/jars
-      - aws s3 cp s3://sap-sources/SAPJCO code/jars --recursive
+      - aws s3 cp s3://sap-sources/SAPJCO code/lib --recursive
       - sam build
     
 #post_build:
