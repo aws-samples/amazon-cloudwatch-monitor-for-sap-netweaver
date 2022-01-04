@@ -25,7 +25,7 @@ Please follow the [step-by-step guide](https://github.com/aws-samples/amazon-clo
 
 ## Update to latest version
 
-If you have deployed an older version of this solution already via **AWS Serverless Application Repository**, you can simply update the stack to the latest version as follows.
+If you have deployed an older version of this solution already via **AWS Serverless Application Repository**, you can simply update the stack to the latest version as follows:
 
 - Launch an [AWS CloudShell](https://console.aws.amazon.com/cloudshell/home) instance
 - Execute the following statements - creates ChangeSet but keeps parameters **unchanged**:
