@@ -5,9 +5,13 @@ set -e
 echo "Specify your SAP SystemID (3 letters):"
 read sapsid
 
+echo "Specify your password for user SAPMONITOR"
+read sappassword
+
 echo 'Prepare ChangeSet...'
 
 json=$(aws cloudformation describe-stacks --stack-name serverlessrepo-sap-monitor-$sapsid --query 'Stacks[*].Parameters')
+json=$(sed 's/****/'$sappassword'/g' <<< $json)
 json=$(sed 's/ParameterKey/Name/g' <<< $json)
 json=$(sed 's/ParameterValue/Value/g' <<< $json)
 json=$(sed 's/\[ \[/\[/g' <<< $json)
@@ -24,4 +28,5 @@ echo 'Wait 30 seconds...'
 sleep 30
 echo 'Deploy...'
 aws cloudformation execute-change-set --change-set-name $changeARN
+aws cloudformation describe-stacks --stack-name serverlessrepo-sap-monitor-$sapsid --query 'Stacks[*].Tags'
 echo 'All done! Check AWS CloudFormation console for any errors!'
