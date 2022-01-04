@@ -1,6 +1,6 @@
 # Deploy via AWS CloudFormation
 
-- Launch an AWS CloudShell instance
+- Launch an [AWS CloudShell](https://console.aws.amazon.com/cloudshell/home) instance
 - Execute the following statements
 ```bash
 wget https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/raw/master/deploy.sh
