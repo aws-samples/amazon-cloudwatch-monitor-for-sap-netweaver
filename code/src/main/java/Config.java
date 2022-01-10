@@ -183,9 +183,12 @@ public final class Config {
                     sdfmon_schedule = true;
                 }
                 
-                Integer we02_tmp = obj.getInt("we02");
-                if (we02_tmp == 1)
-                we02 = true;
+                if(obj.has("we02"))
+                {
+                    Integer we02_tmp = obj.getInt("we02");
+                    if (we02_tmp == 1)
+                    we02 = true;
+                }
                 
                 final PropertiesDestinationDataProvider pddp = new PropertiesDestinationDataProvider(connectProperties);
 

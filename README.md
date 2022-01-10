@@ -57,6 +57,10 @@ The resulting dashboards can look as follows
 
 ## Changelog
 
+1.063
+
+- Bug Fix we02 setting
+
 1.062
 
 - Added Update.sh for simplified update to the latest version
