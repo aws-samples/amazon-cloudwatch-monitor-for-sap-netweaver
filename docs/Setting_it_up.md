@@ -20,7 +20,7 @@ If this is not working in your region, please deploy it via [CloudFormation](Dep
 
 Please carefully fill out all the necessary details, such as SAP System ID, Client, Host/IP-Address, Instance ID, RFC User/Password as well as Security Group(s) and Subnet(s) of your target VPC. Compare your inputs also with the respective EC2 settings for your SAP system. 
 
-**Note:** You will have to deploy a single instance of this application per SAP System ID, if multiple systems shall be monitored!
+**Note:** You will have to deploy a single instance of this solution per SAP System ID, if multiple SAP systems shall be monitored! Also, if you prefer to connect via **SAP Message Server** instead, make sure to perform the following [changes](Message_Server.md) after deployment.
 
 ![CWAlarm](../assets/sam.png)
 
