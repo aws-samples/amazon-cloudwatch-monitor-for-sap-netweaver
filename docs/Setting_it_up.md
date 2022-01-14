@@ -48,6 +48,8 @@ Open the Amazon CloudWatch console. In the navigation pane, choose **Rules**. Se
 
 ## Step 6: Create a dashboard (AWS Console)
 
+For simplicity, you can either use and import this [template](Sample_Dashboard.md) or create a new dashboard from scratch, as follows:
+
 Open the Amazon CloudWatch console. In the navigation pane, choose Metrics. Under Custom Namespaces, you should now find your custom metrics, arranged by SID. You can select any metric and preview its output.
 
 ![CWAlarm](../assets/cw_metrics.png)
@@ -58,8 +60,6 @@ The resulting dashboards can look as follows
 
 ![Dashboard1](../assets/cw_dashboard1.png)
 ![Dashboard2](../assets/cw_dashboard2.png)
-
-For simplicity, you can also use this [template](Sample_Dashboard.md) and adjust!
 
 If desired, CloudWatch even allows you to [embed dashboards](https://aws.amazon.com/de/blogs/devops/building-an-amazon-cloudwatch-dashboard-outside-of-the-aws-management-console/) into your webpage.
 
