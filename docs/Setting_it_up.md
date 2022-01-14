@@ -30,7 +30,7 @@ If you like to start /SDF/SMON yourself instead of automatically through the mon
 
 ## Step 4: Test the function (AWS Console)
 
-Open the Lambda console, select **sap-monitor-\<SID\>** and choose **Test**. In the **Configure test event** page, choose **Create new test event** and enter *{“refresh”:true}*:
+Open the Lambda console, select **sap-monitor-\<SID\>** and choose **Test**. In the **Configure test event** page, choose **Create new test event** and enter *{"refresh":"true"}*
 
 ![CWAlarm](../assets/lambda0.png)
 
