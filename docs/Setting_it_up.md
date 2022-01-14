@@ -1,16 +1,16 @@
 # Setting it up
 
-## Step 1: Create an SAP User for Monitoring (SAPGUI)
+## Step 1: Create an SAP User for Monitoring (SAP GUI)
 
 Please refer to the [step-by-step guide](Create_SAP_Monitoring_User.md) and maintained list of required authorizations.
 
-## Step 2: Create a Lambda layer for SAP JCo (console)
+## Step 2: Create a Lambda layer for SAP JCo (AWS Console)
 
 This activity has to be done once only, regardless of any subsequent deployments. 
 
 Please refer to the [step-by-step guide](Create_AWS_Lambda_layer_for_SAP_Jco.md)
 
-## Step 3: Deploy the solution (console)
+## Step 3: Deploy the solution (AWS Console)
 
 For most AWS Regions, you can easily deploy the solution with the [AWS Serverless Application Repository](https://eu-central-1.console.aws.amazon.com/serverlessrepo/home?region=eu-central-1#/available-applications) by searching for **sap-monitor**. Make sure to tick **Show apps that create custom IAM roles**.
 
@@ -28,7 +28,7 @@ In case of issues, please refer to the [Troubleshooting](Troubleshooting.md) gui
 
 If you like to start /SDF/SMON yourself instead of automatically through the monitor, check the documentation for [manual scheduling](Schedule_SDF_SMON_manually.md).
 
-## Step 4: Test the function (console)
+## Step 4: Test the function (AWS Console)
 
 Open the Lambda console, select **sap-monitor-\<SID\>** and choose **Test**. In the **Configure test event** page, choose **Create new test event** and enter *{“refresh”:true}*:
 
@@ -40,13 +40,13 @@ Hit **Test**. The expected output is shown below:
 
 In case of issues, refer to the [Troubleshooting](Troubleshooting.md) guide.
 
-## Step 5: Enable the Scheduler (console)
+## Step 5: Enable the Scheduler (AWS Console)
 
 Open the Amazon CloudWatch console. In the navigation pane, choose **Rules**. Select the rule **sap-monitor-\<SID\>** and choose **Enable** as **Actions**, so that it runs periodically: 
 
 ![CWAlarm](../assets/scheduler.png)
 
-## Step 6: Create a dashboard (console)
+## Step 6: Create a dashboard (AWS Console)
 
 Open the Amazon CloudWatch console. In the navigation pane, choose Metrics. Under Custom Namespaces, you should now find your custom metrics, arranged by SID. You can select any metric and preview its output.
 
@@ -59,7 +59,9 @@ The resulting dashboards can look as follows
 ![Dashboard1](../assets/cw_dashboard1.png)
 ![Dashboard2](../assets/cw_dashboard2.png)
 
-By the way, if desired, CloudWatch even allows you to [embed graphs](https://aws.amazon.com/de/blogs/devops/building-an-amazon-cloudwatch-dashboard-outside-of-the-aws-management-console/) into your webpage.
+For simplicity, you can also use this [template](Sample_Dashboard.md) and adjust!
+
+If desired, CloudWatch even allows you to [embed dashboards](https://aws.amazon.com/de/blogs/devops/building-an-amazon-cloudwatch-dashboard-outside-of-the-aws-management-console/) into your webpage.
 
 ## Step 7: Create alarms
 
