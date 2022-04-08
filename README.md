@@ -49,6 +49,8 @@ The resulting dashboards can look as follows
 
 ## Settings
 
+Maintained in AWS Secrets Manager: sap-monitor-<SID>
+
 | Parameter | Default | Description |
 |--|--|--|
 |  mshost | n/a | SAP Message Server Host |
