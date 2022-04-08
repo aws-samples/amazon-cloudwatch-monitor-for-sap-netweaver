@@ -16,7 +16,7 @@ Metadata:
     ReadmeUrl: README.md
     Labels: ['sap', 'netweaver', 'monitoring', 'cloudwatch']
     HomePageUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver
-    SemanticVersion: 1.0.63
+    SemanticVersion: 1.0.73
     SourceCodeUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver
   AWS::CloudFormation::Interface: 
     ParameterGroups: 
@@ -109,7 +109,10 @@ Resources:
             \"password\": \"${PASSWORD}\",
             \"language\":\"en\",
             \"/SDF/SMON_DESC\":\"AWSCW\",
-            \"/SDF/SMON_SCHEDULE\":${SCHED}
+            \"/SDF/SMON_SCHEDULE\":${SCHED},
+            \"/SDF/SMON_FREQUENCY\": 30,
+            \"/SDF/SMON_ENQUEUE\": 1,
+            \"we02\": 0
             }"
           - { SID: !Ref SAPSIDParameter, HOST: !Ref SAPHostParameter, INSTANCEID: !Ref SAPInstanceIDParameter, CLIENT: !Ref SAPClientParameter, USER: !Ref SAPRFC0UserParameter, PASSWORD: !Ref SAPRFC1PasswordParameter,  SCHED: !Ref ScheduleParameter }
       Tags:

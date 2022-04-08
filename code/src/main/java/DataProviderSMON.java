@@ -216,6 +216,8 @@ public class DataProviderSMON {
         System.out.println("-> ENDTIM: " + end_time);
 
         //START IMPORT PARAMETERS
+        System.out.println("Collector Frequency: " + config.sdfmon_frequency + " seconds");
+        
         function_start.getImportParameterList().getStructure("ANALYSIS").setValue("DESCRIPTION", config.sdfmon_name);
         function_start.getImportParameterList().getStructure("ANALYSIS").setValue("DATUM", config.system_date);
         function_start.getImportParameterList().getStructure("ANALYSIS").setValue("ST_DAT", config.system_date);
@@ -237,6 +239,7 @@ public class DataProviderSMON {
 
         if(config.sdfmon_enqueue)
         {
+        System.out.println("Collection of ENQUENE metrics enabled!");
         function_start.getImportParameterList().getStructure("ANALYSIS").setValue("SM12", "X");
         function_start.getImportParameterList().getStructure("ANALYSIS").setValue("SM12_CT", 10);
         }

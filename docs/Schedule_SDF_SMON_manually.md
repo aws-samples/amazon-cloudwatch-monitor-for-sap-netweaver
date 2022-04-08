@@ -4,9 +4,7 @@ Although the monitor is designed to start his own /SDF/SMON runs, you can overri
 The required RFC authoriziation for '/SDF/SMON_ANALYSIS_START' is hereby relaxed.  
 Switching between those settings, can be done inside Secrets Manager 'sap-monitor-<SID>'. Simply adjust parameters
 - /SDF/SMON_SCHEDULE -> 0 (false) or 1 (true = auto = default)
-- (optional) /SDF/SMON_DESC -> AWSCW (default description of /SDF/SMON runs)
-- /SDF/SMON_FREQUENCY -> 30 seconds (min = default), increase to 60 in case of high system load / large number of app servers
-- /SDF/SMON_ENQUEUE  -> 1 (true = auto = default) or 0 (false), disable in case of high system load / large number of app servers
+- (Optional) /SDF/SMON_DESC -> AWSCW (default description of /SDF/SMON runs)
 
 **Note:** You have to carefully follow the steps below. The "daily monitoring" feature inside /SDF/SMON will not work, as data collection is delayed.
 

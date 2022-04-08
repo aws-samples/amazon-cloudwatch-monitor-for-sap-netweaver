@@ -180,23 +180,32 @@ public final class Config {
                 
                 sdfmon_name = obj.getString("/SDF/SMON_DESC");
                 
-                Integer sdfmon_schedule_tmp = obj.getInt("/SDF/SMON_SCHEDULE");
-                if (sdfmon_schedule_tmp == 0) {
-                    sdfmon_schedule = false; 
-                } else {
-                    sdfmon_schedule = true;
+                if(obj.has("/SDF/SMON_SCHEDULE"))
+                {
+                    Integer sdfmon_schedule_tmp = obj.getInt("/SDF/SMON_SCHEDULE");
+                    if (sdfmon_schedule_tmp == 0) {
+                        sdfmon_schedule = false; 
+                    } else {
+                        sdfmon_schedule = true;
+                    }
                 }
 
-                Integer sdfmon_frequency_tmp = obj.getInt("/SDF/SMON_FREQUENCY");
-                if (sdfmon_frequency_tmp > 30) {
-                    sdfmon_frequency = sdfmon_frequency_tmp;
+                if(obj.has("/SDF/SMON_FREQUENCY"))
+                {
+                    Integer sdfmon_frequency_tmp = obj.getInt("/SDF/SMON_FREQUENCY");
+                    if (sdfmon_frequency_tmp > 30) {
+                        sdfmon_frequency = sdfmon_frequency_tmp;
+                    }
                 }
 
-                Integer sdfmon_enqueue_tmp = obj.getInt("/SDF/SMON_ENQUEUE");
-                if (sdfmon_enqueue_tmp == 0) {
-                    sdfmon_enqueue = false; 
-                } else {
-                    sdfmon_enqueue = true;
+                if(obj.has("/SDF/SMON_ENQUEUE"))
+                {
+                    Integer sdfmon_enqueue_tmp = obj.getInt("/SDF/SMON_ENQUEUE");
+                    if (sdfmon_enqueue_tmp == 0) {
+                        sdfmon_enqueue = false; 
+                    } else {
+                        sdfmon_enqueue = true;
+                    }
                 }
                 
                 if(obj.has("we02"))
