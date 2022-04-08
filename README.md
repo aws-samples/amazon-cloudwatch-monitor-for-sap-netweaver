@@ -59,7 +59,7 @@ The resulting dashboards can look as follows
 |  language | en | Logon Language |
 |  /SDF/SMON_DESC | AWSCW | Collector Name |
 |  /SDF/SMON_SCHEDULE | 1 | Schedule collector automatically |
-|  /SDF/SMON_FREQUENCY | 30 | Collector frequency in seconds. Note: Increase to 60 in case of high system load / large number of app servers. 30 seconds is minimum frequency!|
+|  /SDF/SMON_FREQUENCY | 30 | Collector frequency in seconds. Note: Increase to 60 seconds in case of high system load / large number of app servers. 30 seconds is minimum frequency!|
 |  /SDF/SMON_ENQUEUE | 1 | Collect enqueue statistics. Note: Disable in case of high system load / large number of app servers |
 |  we02 | 0 | Collect IDOC Metrics. Note: Requires to copy /SDF/E2E_IDOC to **ZE2E_IDOC** and set to remote enabled |
 
