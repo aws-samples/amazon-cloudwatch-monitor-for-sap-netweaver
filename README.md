@@ -56,7 +56,7 @@ The resulting dashboards can look as follows
 |  mshost | n/a | SAP Message Server Host |
 |  msport | n/a | SAP Message Server Port |
 |  group | n/a | SAP Logon Group |
-|  language | EN | Logon Language |
+|  language | en | Logon Language |
 |  /SDF/SMON_DESC | AWSCW | Collector Name |
 |  /SDF/SMON_SCHEDULE | 1 | Schedule collector automatically |
 |  /SDF/SMON_FREQUENCY | 30 | Collector frequency in seconds. Note: Increase to 60 in case of high system load / large number of app servers. 30 seconds is minimum frequency!|
