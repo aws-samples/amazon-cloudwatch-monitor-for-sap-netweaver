@@ -92,10 +92,8 @@ The resulting dashboards can look as follows
 - Updated Dependencies including latest SAP JCo 3.1.5
 - Added new metric: ABAP Dumps (st22)
 - Added new metric: cancelled jobs (se37)
-- Added new metric: failing Inbound & Outbound IDocs (we02) - experimental (\*)
+- Added new metric: failing Inbound & Outbound IDocs (we02)
 - Updated role template
-
-(\*) **Note:** we02 collector requires to copy /SDF/E2E_IDOC to **ZE2E_IDOC** and set to remote enabled! Activate collector by passing we02 = 1 through Secrets Manager!
 
 1.05
 
