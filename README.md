@@ -49,7 +49,7 @@ The resulting dashboards can look as follows
 
 ## Settings
 
-Maintained in AWS Secrets Manager: sap-monitor-<SID>
+Maintained in AWS Secrets Manager: sap-monitor-\<SID\>
 
 | Parameter | Default | Description |
 |--|--|--|
