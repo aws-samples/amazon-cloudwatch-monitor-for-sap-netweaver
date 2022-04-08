@@ -167,7 +167,7 @@ Resources:
           - { SID: !Ref SAPSIDParameter }
       Runtime: java11
       MemorySize: 512
-      Timeout: 30
+      Timeout: 120
       VpcConfig:
         SecurityGroupIds:
           !Ref SecurityGroupParameter

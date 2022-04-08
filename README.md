@@ -57,6 +57,11 @@ The resulting dashboards can look as follows
 
 ## Changelog
 
+1.07
+
+- New Parameter /SDF/SMON_FREQUENCY -> Allows to increase collector frequency, Default = Min = 30 seconds
+- New Parameter /SDF/SMON_ENQUEUE -> Allows to disable collection enqueue statistics (Default: every 10th time)
+
 1.063
 
 - Bug Fix we02 setting

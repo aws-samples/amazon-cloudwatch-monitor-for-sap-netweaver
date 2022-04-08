@@ -222,20 +222,25 @@ public class DataProviderSMON {
         function_start.getImportParameterList().getStructure("ANALYSIS").setValue("ENDDAT", config.system_date);
         function_start.getImportParameterList().getStructure("ANALYSIS").setValue("ST_TIM", start_time);
         function_start.getImportParameterList().getStructure("ANALYSIS").setValue("ENDTIM", end_time);
-        function_start.getImportParameterList().getStructure("ANALYSIS").setValue("FREQU", 30);
+        function_start.getImportParameterList().getStructure("ANALYSIS").setValue("FREQU", config.sdfmon_frequency);
         function_start.getImportParameterList().getStructure("ANALYSIS").setValue("FREQU_DB", 1);
         function_start.getImportParameterList().getStructure("ANALYSIS").setValue("SM50", "X");
         function_start.getImportParameterList().getStructure("ANALYSIS").setValue("SM50_CT", 1);
         function_start.getImportParameterList().getStructure("ANALYSIS").setValue("ST06", "X");
         function_start.getImportParameterList().getStructure("ANALYSIS").setValue("ST06_CT", 2);
         function_start.getImportParameterList().getStructure("ANALYSIS").setValue("ST02", "X");
-        function_start.getImportParameterList().getStructure("ANALYSIS").setValue("ST02_CT", 1);
-        function_start.getImportParameterList().getStructure("ANALYSIS").setValue("QUEUE", "X");
+        function_start.getImportParameterList().getStructure("ANALYSIS").setValue("ST02_CT", 2);
+        function_start.getImportParameterList().getStructure("ANALYSIS").setValue("QUEUE", "X"); //SM51
         function_start.getImportParameterList().getStructure("ANALYSIS").setValue("QUEUE_CT", 1);
-        function_start.getImportParameterList().getStructure("ANALYSIS").setValue("USERS", "X");
-        function_start.getImportParameterList().getStructure("ANALYSIS").setValue("USERS_CT", 1);
+        function_start.getImportParameterList().getStructure("ANALYSIS").setValue("USERS", "X"); //SM04
+        function_start.getImportParameterList().getStructure("ANALYSIS").setValue("USERS_CT", 2);
+
+        if(config.sdfmon_enqueue)
+        {
         function_start.getImportParameterList().getStructure("ANALYSIS").setValue("SM12", "X");
         function_start.getImportParameterList().getStructure("ANALYSIS").setValue("SM12_CT", 10);
+        }
+
         function_start.getImportParameterList().getStructure("ANALYSIS").setValue("TRANSPARENT", "X");
         function_start.getImportParameterList().getStructure("ANALYSIS").setValue("UNAME", config.username);
 

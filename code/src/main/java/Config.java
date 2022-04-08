@@ -37,8 +37,12 @@ public final class Config {
     
     //READ FROM PARAMATER STORE
     public String destination_name; //Used as id
+    
     public String sdfmon_name = "AWSCW"; //Daily Monitoring"
     public Boolean sdfmon_schedule = true;
+    public Integer sdfmon_frequency = 30; //seconds
+    public Boolean sdfmon_enqueue = true;
+
     public String namespace = "sap-monitor";
     public Integer rfc_timeout = 10; //seconds
     public String username = "";
@@ -181,6 +185,18 @@ public final class Config {
                     sdfmon_schedule = false; 
                 } else {
                     sdfmon_schedule = true;
+                }
+
+                Integer sdfmon_frequency_tmp = obj.getInt("/SDF/SMON_FREQUENCY");
+                if (sdfmon_frequency_tmp > 30) {
+                    sdfmon_frequency = sdfmon_frequency_tmp;
+                }
+
+                Integer sdfmon_enqueue_tmp = obj.getInt("/SDF/SMON_ENQUEUE");
+                if (sdfmon_enqueue_tmp == 0) {
+                    sdfmon_enqueue = false; 
+                } else {
+                    sdfmon_enqueue = true;
                 }
                 
                 if(obj.has("we02"))
