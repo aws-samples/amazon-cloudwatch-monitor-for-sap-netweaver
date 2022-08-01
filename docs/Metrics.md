@@ -34,14 +34,19 @@ Currently enabled for Tasktypes \<TYPE\> = DIA & RFC:
 "ST03\_\<TYPE\>\_AVG_DB_CHG_AVG_SNAP" = Average Database Request Time per Changes in ms (ideally max. 10ms)  
 
 **ABAP DUMPS st22 (1 - per System), granularity 5 min:** 
+
 "ST22_DUMPS" = Number of dumps (today)
 
 **ABAP JOBS sm37 (1 - per System), granularity 5 min:**
+
 "SM37_CANCELLED_JOBS" = Number of aborted / failing jobs (today)
 
 **(Optional) IDOC MONITOR we02 (2 - per System), granularity 5 min:**
-"WE02_INBOUND" = Number of aborted / failing inbound IDocs (today)
-"WE02_OUTBOUND" = Number of aborted / failing outbound IDocs (today)
+
+"WE02_INBOUND" = Number of aborted / failing inbound IDocs (today). 
+
+"WE02_OUTBOUND" = Number of aborted / failing outbound IDocs (today). 
+
 -> we02 collector requires to copy /SDF/E2E_IDOC to **ZE2E_IDOC** and set to remote enabled! Activate collector by passing we02 = 1 through Secrets Manager!
 
   
