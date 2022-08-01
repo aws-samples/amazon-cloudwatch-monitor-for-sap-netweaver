@@ -43,10 +43,10 @@ Currently enabled for Tasktypes \<TYPE\> = DIA & RFC:
 
 **(Optional) IDOC MONITOR we02 (2 metrics per SID), granularity 5 min:**
 
-- "WE02_INBOUND" = Number of aborted / failing inbound IDocs (today). 
-- "WE02_OUTBOUND" = Number of aborted / failing outbound IDocs (today). 
+- "WE02_INBOUND" = Number of aborted / failing inbound IDocs (today)
+- "WE02_OUTBOUND" = Number of aborted / failing outbound IDocs (today)
 
--> we02 collector requires to copy /SDF/E2E_IDOC to **ZE2E_IDOC** and set to remote enabled! Activate collector by passing we02 = 1 through Secrets Manager!
+-> we02 collector requires to copy /SDF/E2E_IDOC to **ZE2E_IDOC** and set to remote enabled! Activate collector by passing we02 = 1 through AWS Secrets Manager!
 
   
 **Note:** Further Metrics such as SAP HANA Data/Log Disk Space, Free Memory could be captured via the [CloudWatch Agent](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html).
