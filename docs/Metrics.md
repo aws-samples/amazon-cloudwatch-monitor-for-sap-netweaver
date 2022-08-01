@@ -24,14 +24,14 @@
 
 **SWNC_GET_WORKLOAD_SNAPSHOT = [st03](https://wiki.scn.sap.com/wiki/pages/viewpage.action?pageId=471174735) Last Minute Load (12 - per SID), granularity 5 min**  
 
-Currently enabled for Tasktypes DIA & RFC:
+Currently enabled for Tasktypes \<TYPE\> = DIA & RFC:
 
-"ST03_<TYPE>_AVG_SNAP" = Average Response Time per Step in ms (ideally < 1s)  
-"ST03_<TYPE>_CPU_TIME_PERC_SNAP" = Average CPU Time in % as part of average response time (ideally ca. 40%)  
-"ST03_<TYPE>_DB_TIME_PERC_SNAP" = Average DB Time in % as part of average response time (ideally ca. 40%)  
-"ST03_<TYPE>_AVG_DB_DIR_SNAP" = Average Database Request Time per Direct reads in ms (ideally max. 10ms)  
-"ST03_<TYPE>_AVG_DB_SEQ_AVG_SNAP" = Average Database Request Time per Sequential reads in ms (ideally max. 10ms)  
-"ST03_<TYPE>_AVG_DB_CHG_AVG_SNAP" = Average Database Request Time per Changes in ms (ideally max. 10ms)  
+"ST03\_\<TYPE\>\_AVG_SNAP" = Average Response Time per Step in ms (ideally < 1s)  
+"ST03\_\<TYPE\>\_CPU_TIME_PERC_SNAP" = Average CPU Time in % as part of average response time (ideally ca. 40%)  
+"ST03\_\<TYPE\>\_DB_TIME_PERC_SNAP" = Average DB Time in % as part of average response time (ideally ca. 40%)  
+"ST03\_\<TYPE\>\_AVG_DB_DIR_SNAP" = Average Database Request Time per Direct reads in ms (ideally max. 10ms)  
+"ST03\_\<TYPE\>\_AVG_DB_SEQ_AVG_SNAP" = Average Database Request Time per Sequential reads in ms (ideally max. 10ms)  
+"ST03\_\<TYPE\>\_AVG_DB_CHG_AVG_SNAP" = Average Database Request Time per Changes in ms (ideally max. 10ms)  
 
 **ABAP DUMPS st22 (1 - per System), granularity 5 min:** 
 "ST22_DUMPS" = Number of dumps (today)
