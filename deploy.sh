@@ -15,7 +15,8 @@ fi
 
 # Copy Artifacts
 echo "Copy artifacts to S3 Bucket"
-aws s3 cp s3://sap-monitor/$releaseID s3://$accountid-sapmonitor --source-region eu-central-1
+aws s3 cp s3://sap-monitor/$releaseID ./ --source-region eu-central-1
+aws s3 cp $releaseID s3://$accountid-sapmonitor/$releaseID
 
 # Upload YAML
 echo "Adjust AWS CloudFormation Template"
