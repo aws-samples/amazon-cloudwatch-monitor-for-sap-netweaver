@@ -16,7 +16,7 @@ Metadata:
     ReadmeUrl: README.md
     Labels: ['sap', 'netweaver', 'monitoring', 'cloudwatch']
     HomePageUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver
-    SemanticVersion: 1.0.73
+    SemanticVersion: 1.0.81
     SourceCodeUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver
   AWS::CloudFormation::Interface: 
     ParameterGroups: 
@@ -168,8 +168,9 @@ Resources:
         !Sub
           - SAP Monitoring for <${SID}>
           - { SID: !Ref SAPSIDParameter }
-      Runtime: java11
+      Runtime: java21
       MemorySize: 512
+      Architectures: [arm64]
       Timeout: 120
       VpcConfig:
         SecurityGroupIds:

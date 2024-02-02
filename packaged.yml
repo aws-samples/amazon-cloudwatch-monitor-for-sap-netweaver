@@ -11,14 +11,14 @@ Metadata:
     Author: mtoerpe
     SpdxLicenseId: Apache-2.0
     LicenseUrl: s3://sap-monitor/34400b68072d710fecd0a2940a0d1658
-    ReadmeUrl: s3://sap-monitor/c84d6466a4a9a312c9d83b97a21bb366
+    ReadmeUrl: s3://sap-monitor/a29c894beba3d3825b52357ee287c03d
     Labels:
     - sap
     - netweaver
     - monitoring
     - cloudwatch
     HomePageUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver
-    SemanticVersion: 1.0.73
+    SemanticVersion: 1.0.81
     SourceCodeUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver
   AWS::CloudFormation::Interface:
     ParameterGroups:
@@ -121,6 +121,8 @@ Resources:
       Tags:
       - Key: AppName
         Value: SAPMONITOR
+    Metadata:
+      SamResourceId: SecretsManager
   ScheduledRule:
     Type: AWS::Events::Rule
     Properties:
@@ -142,6 +144,8 @@ Resources:
           - CWLambdaFunction
           - Arn
         Id: latest
+    Metadata:
+      SamResourceId: ScheduledRule
   PermissionForEventsToInvokeLambda:
     Type: AWS::Lambda::Permission
     Properties:
@@ -155,10 +159,12 @@ Resources:
         Fn::GetAtt:
         - ScheduledRule
         - Arn
+    Metadata:
+      SamResourceId: PermissionForEventsToInvokeLambda
   CWLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://sap-monitor/c449f953007644160207c643b54bde7e
+      CodeUri: s3://sap-monitor/b996f7cb309a21b7413ffc5234569471
       Layers:
       - Fn::Sub:
         - arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer:sapjco:${LLY}
@@ -175,8 +181,10 @@ Resources:
         - SAP Monitoring for <${SID}>
         - SID:
             Ref: SAPSIDParameter
-      Runtime: java11
+      Runtime: java21
       MemorySize: 512
+      Architectures:
+      - arm64
       Timeout: 120
       VpcConfig:
         SecurityGroupIds:
@@ -204,6 +212,8 @@ Resources:
           Resource: '*'
       Tags:
         AppName: SAPMONITOR
+    Metadata:
+      SamResourceId: CWLambdaFunction
 Outputs:
   CWLambdaFunction:
     Description: SAP Monitor Lambda Function ARN

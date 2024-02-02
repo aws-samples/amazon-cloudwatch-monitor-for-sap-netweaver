@@ -73,6 +73,12 @@ The resulting dashboards can look as follows
 
 ## Changelog
 
+1.08
+
+- Java 21
+- Latest AWS SDK
+- ARM64 (!)
+
 1.07
 
 - New Parameter /SDF/SMON_FREQUENCY -> Allows to increase collector frequency, Default = Min = 30 seconds

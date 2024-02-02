@@ -12,9 +12,9 @@ Please refer to the [step-by-step guide](Create_AWS_Lambda_layer_for_SAP_Jco.md)
 
 ## Step 3: Deploy the solution (AWS Console)
 
-For most AWS Regions, you can easily deploy the solution with the [AWS Serverless Application Repository](https://eu-central-1.console.aws.amazon.com/serverlessrepo/home?region=eu-central-1#/available-applications) by searching for **sap-monitor**. Make sure to tick **Show apps that create custom IAM roles**.
+For most AWS Regions, you can easily deploy the solution via the [AWS Serverless Application Repository](https://console.aws.amazon.com/serverlessrepo/home#/available-applications). Simply search for **sap-monitor**. Make sure to tick **Show apps that create custom IAM roles**.
 
-If this is not working in your region, please deploy it via [CloudFormation](Deploy_Manually.md) instead.
+For all others regions, please deploy it via [CloudFormation](Deploy_Manually.md) instead.
   
 ![CWAlarm](../assets/sar.png)
 

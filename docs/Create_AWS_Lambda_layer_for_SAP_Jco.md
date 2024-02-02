@@ -3,7 +3,7 @@
 **Note:** This activity has to be done **once** only, regardless of any subsequent deployments.
 
 Download the latest [SAP Java Connector](https://support.sap.com/en/product/connectors/jco.html) (**>= 3.1.5**) to your local disk.
-Make sure to select Linux for Intel, 64 bit!
+Make sure to select **Linux for AArch64 compatible processors** 64-bit!
 
 ![SAPDownload](../assets/ly0.png)
 
@@ -23,7 +23,7 @@ Go to the AWS console of your AWS target region. Navigate to AWS Lambda – Laye
 
 ![Imgur](../assets/ly4.png)
 
-As Name choose “**sapjco**” (mandatory) and select your recently created .zip file. Also tick Java 8 & 11 as runtimes:
+As Name choose “**sapjco**” (mandatory) and select your recently created .zip file. Also tick Java 21 as runtime:
 
 ![Imgur](../assets/ly5.png)
 

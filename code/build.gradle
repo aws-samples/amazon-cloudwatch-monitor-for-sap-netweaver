@@ -16,17 +16,17 @@ repositories {
     mavenCentral()
 }
 
-sourceCompatibility = 11
-targetCompatibility = 11
+sourceCompatibility = 21
+targetCompatibility = 21
 
 dependencies {
     implementation (
-        'com.amazonaws:aws-lambda-java-core:1.2.1',
-        'com.amazonaws:aws-lambda-java-events:3.11.0',
-        'com.amazonaws:aws-java-sdk-ssm:1.12.131',
-        'com.amazonaws:aws-java-sdk-cloudwatch:1.12.131',
-        'com.amazonaws:aws-java-sdk-secretsmanager:1.12.131',
-        'org.json:json:20211205'
+        'com.amazonaws:aws-lambda-java-core:1.2.3',
+        'com.amazonaws:aws-lambda-java-events:3.11.4',
+        'com.amazonaws:aws-java-sdk-ssm:1.12.649',
+        'com.amazonaws:aws-java-sdk-cloudwatch:1.12.649',
+        'com.amazonaws:aws-java-sdk-secretsmanager:1.12.649',
+        'org.json:json:20231013'
     )
     implementation fileTree(dir: 'lib', include: '*')
 }
