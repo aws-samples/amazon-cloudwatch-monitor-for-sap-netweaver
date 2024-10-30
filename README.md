@@ -1,7 +1,5 @@
 # Overview
 
-![badge](https://codebuild.eu-central-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiTVBuUW9pbGlwNlNxVWJ4N3VhdmkyTjZJMVRqc1VvTnk0ZXNsWXNvNnFTR1pkRnlxQkFuQVpORkRqQnp2aUVYaE5PT1ZhVW83R2l5ZkljaHI4SGR1OEdvPSIsIml2UGFyYW1ldGVyU3BlYyI6InNPaUFXamZKdkNKZUFTaTYiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
-
 Amazon CloudWatch Monitoring for SAP NetWeaver ABAP-based environments powered by AWS Lambda.
 
 Please see our blog post [SAP Monitoring: A serverless approach using Amazon CloudWatch](https://aws.amazon.com/blogs/awsforsap/sap-monitoring-a-serverless-approach-using-amazon-cloudwatch/) for more info on the motivation and concept!
