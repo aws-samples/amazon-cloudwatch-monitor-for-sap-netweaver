@@ -4,9 +4,9 @@ This solution helps you monitor SAP NetWeaver ABAP-based environments via Amazon
 
 Benefits at a glance:
 - Serverless, no infrastructure to manage
-- Cost Effective, pay per use
+- Cost effective, [pay per use](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/docs/Cost_Considerations.md)  
 - Agentless, using SAP Standard RFCs only
-- Provides common SAP System availability & performance metrics
+- Provides common SAP System availability & performance [metrics](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/docs/Metrics.md) 
 - Customizable and Extensible
 
 > [!IMPORTANT]  
