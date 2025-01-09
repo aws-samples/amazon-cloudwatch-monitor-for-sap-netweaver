@@ -21,11 +21,12 @@ targetCompatibility = 21
 
 dependencies {
     implementation (
-        'com.amazonaws:aws-lambda-java-core:1.2.3',
-        'com.amazonaws:aws-lambda-java-events:3.11.4',
-        'com.amazonaws:aws-java-sdk-ssm:1.12.649',
-        'com.amazonaws:aws-java-sdk-cloudwatch:1.12.649',
-        'com.amazonaws:aws-java-sdk-secretsmanager:1.12.649',
+//        'software.amazon.awssdk:protocol-core:2.29.47',
+//        'software.amazon.awssdk:lambda:2.29.47',
+//        'com.amazonaws:aws-java-sdk-events:1.12.780',
+//        'software.amazon.awssdk:ssm:2.29.47',
+//        'software.amazon.awssdk:cloudwatch:2.29.47',
+        'software.amazon.awssdk:secretsmanager:2.29.47',
         'org.json:json:20231013'
     )
     implementation fileTree(dir: 'lib', include: '*')

@@ -2,11 +2,10 @@
 
 Amazon CloudWatch Monitoring for SAP NetWeaver ABAP-based environments powered by AWS Lambda.
 
-Please see also the original blog post [SAP Monitoring: A serverless approach using Amazon CloudWatch](https://aws.amazon.com/blogs/awsforsap/sap-monitoring-a-serverless-approach-using-amazon-cloudwatch/) for more info on the motivation and concept!
-
 > [!IMPORTANT]  
 > Being agentless, this solution also integrates natively into any **SAP RISE** environment, as long as network connectivity ([Guide](https://docs.aws.amazon.com/sap/latest/general/connectivity-rise.html)) is established.
 
+Please see also the original blog post [SAP Monitoring: A serverless approach using Amazon CloudWatch](https://aws.amazon.com/blogs/awsforsap/sap-monitoring-a-serverless-approach-using-amazon-cloudwatch/) for more info on the motivation and concept!
 
 ## Prerequisites
 
@@ -42,9 +41,21 @@ chmod +x update.sh
 
 **Note:** You will have to deploy a single instance of this application per SAP System ID! 
 
-![Architecture](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/assets/arch.png?raw=true)
+### (Self-) Hosted on AWS
 
-The resulting dashboards can look as follows  
+![Architecture](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/assets/arch_self.jpg?raw=true)
+
+### SAP RISE
+
+![Architecture](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/assets/arch_rise.jpg?raw=true)
+
+### OnPremise
+
+![Architecture](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/assets/arch_onprem.jpg?raw=true)
+
+## CloudWatch Dashboards
+
+The resulting dashboards are customizable and may look as follows  
 
 ![Dashboard1](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/assets/cw_dashboard1.png?raw=true)
 ![Dashboard2](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/assets/cw_dashboard2.png?raw=true)
@@ -75,10 +86,15 @@ The resulting dashboards can look as follows
 
 ## Changelog
 
+1.09
+
+- Added note for SAP RISE deployments
+- Latest AWS SDK (v2)
+
 1.08
 
 - Java 21
-- Latest AWS SDK
+- Latest AWS SDK (v1)
 - ARM64 (!)
 
 1.07

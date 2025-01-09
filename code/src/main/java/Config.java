@@ -13,12 +13,15 @@
   permissions and limitations under the License.
 */
 
-import com.amazonaws.services.lambda.runtime.LambdaLogger;
-import com.amazonaws.services.secretsmanager.AWSSecretsManagerClientBuilder;
-import com.amazonaws.services.simplesystemsmanagement.AWSSimpleSystemsManagement;
-import com.amazonaws.services.simplesystemsmanagement.AWSSimpleSystemsManagementClientBuilder;
-import com.amazonaws.services.simplesystemsmanagement.model.GetParameterRequest;
-import com.amazonaws.services.simplesystemsmanagement.model.GetParameterResult;
+//import software.amazon.awssdk.lambda.runtime.LambdaLogger;
+import software.amazon.awssdk.services.secretsmanager.SecretsManagerClient;
+import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueRequest;
+import software.amazon.awssdk.services.secretsmanager.model.GetSecretValueResponse;
+import software.amazon.awssdk.services.secretsmanager.model.SecretsManagerException;
+//import software.amazon.awssdk.simplesystemsmanagement.AWSSimpleSystemsManagement;
+//import software.amazon.awssdk.simplesystemsmanagement.AWSSimpleSystemsManagementClientBuilder;
+//import software.amazon.awssdk.simplesystemsmanagement.model.GetParameterRequest;
+//import software.amazon.awssdk.simplesystemsmanagement.model.GetParameterResult;
 import com.sap.conn.jco.AbapException;
 import com.sap.conn.jco.JCoDestination;
 import com.sap.conn.jco.JCoDestinationManager;
@@ -60,7 +63,7 @@ public final class Config {
 
     public PropertiesDestinationDataProvider pddp_old;
 
-    public LambdaLogger logger;
+    //public LambdaLogger logger;
     
     public JCoDestination destination;
 
@@ -131,18 +134,23 @@ public final class Config {
         if (destination_name == null) {
             System.out.println("Downloading config from AWS Secrets Manager: " + secret_key);
 
-            final com.amazonaws.services.secretsmanager.AWSSecretsManager client  = AWSSecretsManagerClientBuilder.standard().build();
+            final SecretsManagerClient client  = SecretsManagerClient.builder().build();
             
             String secret = null;
-            final com.amazonaws.services.secretsmanager.model.GetSecretValueRequest getSecretValueRequest = 
-            new com.amazonaws.services.secretsmanager.model.GetSecretValueRequest().withSecretId(secret_key);
-            com.amazonaws.services.secretsmanager.model.GetSecretValueResult getSecretValueResult = null;
+            
+            //final software.amazon.awssdk.secretsmanager.model.GetSecretValueRequest getSecretValueRequest = 
+            //new software.amazon.awssdk.secretsmanager.model.GetSecretValueRequest().withSecretId(secret_key);
+            //software.amazon.awssdk.secretsmanager.model.GetSecretValueResult getSecretValueResult = null;
+
+            GetSecretValueRequest valueRequest = GetSecretValueRequest.builder()
+                    .secretId(secret_key)
+                    .build();
 
             try {
-                getSecretValueResult = client.getSecretValue(getSecretValueRequest);
+                GetSecretValueResponse valueResponse = client.getSecretValue(valueRequest);
 
-                if (getSecretValueResult.getSecretString() != null) {
-                    secret = getSecretValueResult.getSecretString();
+                if (valueResponse.secretString() != null) {
+                    secret = valueResponse.secretString();
 
                     if(debug)
                     System.out.println(secret);

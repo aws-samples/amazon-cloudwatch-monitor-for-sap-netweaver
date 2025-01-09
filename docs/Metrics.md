@@ -1,7 +1,5 @@
 # Collected SAP Metrics
 
-**Note:** This section is continously updated!
-
 **Generic (2 metrics per SID):**  
 - "PING" = SAP Monitor RFC Execution Time (/SDF/SMON)
 - "TOTAL_APP_SERVERS" = Number of active SAP Application Servers
@@ -48,5 +46,4 @@ Currently enabled for Tasktypes \<TYPE\> = DIA & RFC:
 
 -> we02 collector requires to copy /SDF/E2E_IDOC to **ZE2E_IDOC** and set to remote enabled! Activate collector by passing we02 = 1 through AWS Secrets Manager!
 
-  
 **Note:** Further Metrics such as SAP HANA Data/Log Disk Space, Free Memory could be captured via the [CloudWatch Agent](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html).

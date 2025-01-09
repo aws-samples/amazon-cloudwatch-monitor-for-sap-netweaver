@@ -1,6 +1,6 @@
 ## Performance & Overhead Considerations
 
-We are currently using two techniques to query the SAP system regularly and collect insights
+This solution features 2 distinct data collectors to periodically query the SAP system and collect insights
 
 - **1 min** interval for /SDF/SMON data with a 30s granularity (scheduled daily on demand):
 

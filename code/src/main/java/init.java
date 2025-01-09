@@ -14,7 +14,7 @@
 */
 
 
-import com.amazonaws.services.lambda.runtime.Context;
+//import software.amazon.awssdk.lambda.runtime.Context;
 //import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import com.sap.conn.jco.JCoException;
 
@@ -30,11 +30,11 @@ public class init {
 
     //LAUNCH VIA 'gradle run'
     public static void main(final String[] args) throws JCoException {
-        handleRequest(null, null);
+        handleRequest(null);
     }
 
     // LAUNCH VIA AWS LAMBDA
-    public static String handleRequest(final Object input, final Context context) throws JCoException {
+    public static String handleRequest(final Object input) throws JCoException {
 
         config = Config.getInstance();
         
@@ -43,13 +43,15 @@ public class init {
 
         config.iteration++;
 
-        if (context != null && input != null) { 
+        if (input != null) { 
 
-            config.logger = context.getLogger();
+            //config.logger = context.getLogger();
 
             if (config.debug){
-                config.logger.log("Received Command: " + input + "\n");
-                config.logger.log("Debugging ON");
+                //config.logger.log("Received Command: " + input + "\n");
+                //config.logger.log("Debugging ON");
+                System.out.println("Received Command: " + input + "\n");
+                System.out.println("Debugging ON");
             }
 
             //REINITIALIZE
@@ -60,7 +62,8 @@ public class init {
                 config.connected = false;
                 config.reset = true;
                 config.iteration = 1;
-                config.logger.log("Config RESET");
+                //config.logger.log("Config RESET");
+                System.out.println("Config RESET");
             }
 
         }

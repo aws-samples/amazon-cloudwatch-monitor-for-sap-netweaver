@@ -16,7 +16,7 @@ Metadata:
     ReadmeUrl: README.md
     Labels: ['sap', 'netweaver', 'monitoring', 'cloudwatch']
     HomePageUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver
-    SemanticVersion: 1.0.81
+    SemanticVersion: 1.0.9
     SourceCodeUrl: https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver
   AWS::CloudFormation::Interface: 
     ParameterGroups: 
