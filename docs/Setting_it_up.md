@@ -1,4 +1,4 @@
-# Setting it up
+# Deploy Solution
 
 ## Step 1: Create an SAP User for Monitoring (SAP GUI)
 

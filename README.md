@@ -1,9 +1,16 @@
-# Overview
+# Amazon CloudWatch Monitor for SAP NetWeaver ABAP-based environments
 
-Amazon CloudWatch Monitoring for SAP NetWeaver ABAP-based environments powered by AWS Lambda.
+This solution helps you monitor SAP NetWeaver ABAP-based environments via Amazon CloudWatch.
+
+Benefits at a glance:
+- Serverless, no infrastructure to manage
+- Cost Effective, pay per use
+- Agentless, using SAP Standard RFCs only
+- Provides common SAP System availability & performance metrics
+- Customizable and Extensible
 
 > [!IMPORTANT]  
-> Being agentless, this solution also integrates natively into any **SAP RISE** environment, as long as network connectivity ([Guide](https://docs.aws.amazon.com/sap/latest/general/connectivity-rise.html)) is established.
+> Being agentless, this solution also integrates natively into any **SAP RISE** environment, as long as network connectivity ([Guide](https://docs.aws.amazon.com/sap/latest/general/connectivity-rise.html)) is established, see architecture patterns below.
 
 Please see also the original blog post [SAP Monitoring: A serverless approach using Amazon CloudWatch](https://aws.amazon.com/blogs/awsforsap/sap-monitoring-a-serverless-approach-using-amazon-cloudwatch/) for more info on the motivation and concept!
 
@@ -13,18 +20,18 @@ Please see also the original blog post [SAP Monitoring: A serverless approach us
   - SAP Component ST-PI Release 740 SP 08 or higher.
   - SAP statistical records enabled (transaction codes stad / st03).  
   If not active by default, please check [SAP note 2369736](https://launchpad.support.sap.com/#/notes/0002369736).
-  - SAP RFC user and password - see "Setting it up -> Step 1"
-- SAP S-User to download SAP Java Connector – see “Setting it up -> Step 2”
+  - SAP RFC user and password - see "[Deploy Solution](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/docs/Setting_it_up.md) -> Step 1"
+- SAP S-User to download SAP Java Connector – see “[Deploy Solution](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/docs/Setting_it_up.md) -> Step 2”
 - Amazon VPC security group(s) allowing inbound/outbound traffic - see also section “Architecture”:
   - Lambda + SAP@EC2: Port **33\<instanceID\>** or alternatively [message server port](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/docs/Message_Server.md), so that the Lambda function can connect via the private subnet to the SAP system to be monitored
   - Lambda: Additionally port **443** to call AWS Secrets Manager and CloudWatch APIs. In case of a private subnet without NAT Gateway make sure to create respective [private endpoints](https://docs.aws.amazon.com/vpc/latest/userguide/vpce-interface.html)!
 - For Production systems, make sure to enable CloudWatch detailed monitoring according to [SAP note 1656250](https://launchpad.support.sap.com/#/notes/1656250).
 
-## Initial setup
+## Deploy Solution
 
 Please follow the [step-by-step guide](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/docs/Setting_it_up.md).
 
-## Update to latest version
+## Update Solution
 
 If you have deployed an older version of this solution already via **AWS Serverless Application Repository**, you can simply update the stack to the latest version as follows:
 
@@ -39,17 +46,23 @@ chmod +x update.sh
 
 ## Architecture
 
-**Note:** You will have to deploy a single instance of this application per SAP System ID! 
+**Note:** You will have to deploy a single instance of this solution per SAP System ID! 
 
 ### (Self-) Hosted on AWS
+
+For SAP systems running on Amazon EC2 within your own VPC, the architecture looks as follows:
 
 ![Architecture](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/assets/arch_self.jpg?raw=true)
 
 ### SAP RISE
 
+For SAP RISE on AWS deployments, the architecture looks as follows:
+
 ![Architecture](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/assets/arch_rise.jpg?raw=true)
 
-### OnPremise
+### On-premise
+
+You can also use this solution to instrument SAP systems running on-premise or simply anywhere outside AWS as follows:
 
 ![Architecture](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/assets/arch_onprem.jpg?raw=true)
 
@@ -60,9 +73,9 @@ The resulting dashboards are customizable and may look as follows
 ![Dashboard1](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/assets/cw_dashboard1.png?raw=true)
 ![Dashboard2](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/assets/cw_dashboard2.png?raw=true)
 
-## Settings
+## Configuration
 
-**Optional** parameters, maintained in AWS Secrets Manager: sap-monitor-\<SID\>
+The following **optional** parameters can be maintained in AWS Secrets Manager (Secret-Name: sap-monitor-\<SID\>) and adjusted to your needs:
 
 | Parameter | Default | Description |
 |--|--|--|
@@ -76,7 +89,7 @@ The resulting dashboards are customizable and may look as follows
 |  /SDF/SMON_ENQUEUE | 1 | Collect enqueue statistics. Note: Disable in case of high system load / large number of app servers |
 |  we02 | 0 | Collect IDOC Metrics. Note: Requires to copy /SDF/E2E_IDOC to **ZE2E_IDOC** and set to remote enabled |
 
-## Further Read
+## Further Resources
 
 - [Cost Considerations](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/docs/Cost_Considerations.md)  
 - [Performance & Overhead Considerations](https://github.com/aws-samples/amazon-cloudwatch-monitor-for-sap-netweaver/blob/master/docs/Performance_Considerations.md)  
